@@ -6,7 +6,12 @@
 :root {
   --body-bg: #1f1f1f;
   --body-cl: #f5f5f5;
-  --panel-fill-bg: rgba(68, 70, 79, 0.5);
+  --panel-fill-bg: rgba(55, 55, 55, 0.5);
+  --bg-dark: #282828;
+  --tomato: #EF3D4F;
+  --clr-green: #1bbf89;
+  --clr-default: #616779;
+  --clr-primary: #0f83c9;
 }
 
 * {
@@ -23,4 +28,192 @@ body {
   line-height: 1.5;
   color: var(--body-cl);
   background-color: var(--body-bg);
+}
+
+.card {
+  background-color: var(--panel-fill-bg);
+}
+
+.btn {
+  min-width: 75px !important;
+}
+
+.btn.btn-rounded {
+  border-radius: 50px;
+}
+
+.btn.btn-squared {
+  border-radius: 0;
+}
+
+.btn-danger {
+  color: #949ba2;
+  background-color: transparent;
+  border-color: #EF3D4F;
+}
+
+.btn-danger:not(:disabled):not(.disabled):focus,
+.btn-danger:not(:disabled):not(.disabled).focus {
+  color: #ffffff;
+  background-color: rgba(219, 82, 75, 0.1);
+  border-color: #EF3D4F;
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn-danger:hover {
+  color: #ffffff;
+  background-color: rgba(219, 82, 75, 0.1);
+  border-color: #EF3D4F;
+}
+
+.btn-danger:not(:disabled):not(.disabled):active,
+.btn-danger:not(:disabled):not(.disabled).active,
+.open > .dropdown-toggle.btn-danger {
+  color: #ffffff;
+  background-color: rgba(219, 82, 75, 0.1);
+  border-color: #EF3D4F;
+}
+
+.btn-success {
+  color: #949ba2;
+  background-color: transparent;
+  border-color: #1bbf89;
+}
+
+.btn-success:not(:disabled):not(.disabled):focus,
+.btn-success:not(:disabled):not(.disabled).focus {
+  color: #ffffff;
+  background-color: rgba(27, 191, 137, 0.1);
+  border-color: #1bbf89;
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn-success:hover {
+  color: #ffffff;
+  background-color: rgba(27, 191, 137, 0.1);
+  border-color: #1bbf89;
+}
+
+.btn-success:not(:disabled):not(.disabled):active,
+.btn-success:not(:disabled):not(.disabled).active,
+.open > .dropdown-toggle.btn-success {
+  color: #ffffff;
+  background-color: rgba(27, 191, 137, 0.1);
+  border-color: #1bbf89;
+}
+
+.btn-primary {
+  color: #949ba2;
+  background-color: transparent;
+  border-color: #0f83c9;
+}
+
+.btn-primary:not(:disabled):not(.disabled):focus,
+.btn-primary:not(:disabled):not(.disabled).focus {
+  color: #ffffff;
+  background-color: rgba(15, 131, 201, 0.1);
+  border-color: #0f83c9;
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  color: #ffffff;
+  background-color: rgba(15, 131, 201, 0.1);
+  border-color: #0f83c9;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.open > .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: rgba(15, 131, 201, 0.1);
+  border-color: #0f83c9;
+}
+
+.btn-default {
+  color: #949ba2;
+  background-color: transparent;
+  border-color: #616779;
+}
+
+.btn-default:not(:disabled):not(.disabled):focus,
+.btn-default:not(:disabled):not(.disabled).focus {
+  color: #ffffff;
+  background-color: rgba(97, 103, 121, 0.1);
+  border-color: #616779;
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn-default:hover {
+  color: #ffffff;
+  background-color: rgba(97, 103, 121, 0.1);
+  border-color: #616779;
+}
+
+.btn-default:not(:disabled):not(.disabled):active,
+.btn-default:not(:disabled):not(.disabled).active,
+.open > .dropdown-toggle.btn-default {
+  color: #ffffff;
+  background-color: rgba(97, 103, 121, 0.1);
+  border-color: #616779;
+}
+
+.table {
+  margin-bottom: 0px;
+}
+.table-dark {
+  color: #fff;
+  background-color: var(--bg-dark) !important;;
+}
+.table>thead>tr>th {
+  border-bottom: none;
+  cursor: pointer;
+  user-select: none;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+  border-top: 1px solid rgba(17, 17, 17, 0.7215686274509804);
+}
+.table-dark td, .table-dark th, .table-dark thead th {
+  border-color: #212529;
+  cursor: pointer;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  height: 30px;
+  overflow: visible;
+  width: 15px
+}
+
+::-webkit-scrollbar-button {
+  height: 0;
+  width: 0
+}
+
+::-webkit-scrollbar-corner {
+  background: 0 0
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #414550;
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 5px;
+  min-height: 50%;
+  padding: 0;
+  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+  color: rgba(255, 255, 255, .6);
+  border-radius: 10px
+}
+
+::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 1px;
+  width: 10px
 }

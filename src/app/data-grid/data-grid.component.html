@@ -1,1 +1,20 @@
-<p>data-grid works!</p>
+<table class="table table-dark">
+  <thead>
+  <tr>
+    <th *ngFor="let col of columnDefs">
+      <span>{{col.displayName}}</span>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let todo of todoList">
+    <td>{{todo.id}}</td>
+    <td>{{todo.name}}</td>
+    <td>{{todo.tag}}</td>
+    <td><span class="fa fa-flag pr-1" aria-hidden="true"
+              [ngClass]="getPriorityClass(todo.priority)"></span>{{todo.priority}}</td>
+    <td><span class="badge" [ngClass]="getStatusClass(todo.status)">{{todo.status}}</span></td>
+    <td>{{todo.duedate}}</td>
+  </tr>
+  </tbody>
+</table>

@@ -6,5 +6,29 @@
     "priority": "High",
     "status": "In Progress",
     "duedate": "14-05-2020"
+  },
+  {
+    "id": "2",
+    "name": "Bank Work",
+    "tag": "Personal",
+    "priority": "Low",
+    "status": "In Progress",
+    "duedate": "14-05-2020"
+  },
+  {
+    "id": "3",
+    "name": "Client Meeting",
+    "tag": "Office",
+    "priority": "Medium",
+    "status": "Completed",
+    "duedate": "14-05-2020"
+  },
+  {
+    "id": "4",
+    "name": "Project Demo",
+    "tag": "Office",
+    "priority": "High",
+    "status": "Overdue",
+    "duedate": "14-05-2020"
   }
 ]
