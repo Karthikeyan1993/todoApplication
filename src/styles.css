@@ -33,9 +33,22 @@ body {
 .card {
   background-color: var(--panel-fill-bg);
 }
+.badge{
+  font-size: 100%;
+  font-weight: normal;
+}
+.badge-danger{
+  background-color: var(--tomato) !important;
+}
+.badge-success{
+  background-color: var(--clr-green) !important;
+}
+.badge-primary{
+  background-color: var(--clr-primary) !important;
+}
 
 .btn {
-  min-width: 75px !important;
+  min-width: 100px !important;
 }
 
 .btn.btn-rounded {
@@ -49,7 +62,7 @@ body {
 .btn-danger {
   color: #949ba2;
   background-color: transparent;
-  border-color: #EF3D4F;
+  border: 2px solid #EF3D4F;
 }
 
 .btn-danger:not(:disabled):not(.disabled):focus,
@@ -78,7 +91,7 @@ body {
 .btn-success {
   color: #949ba2;
   background-color: transparent;
-  border-color: #1bbf89;
+  border: 2px solid #1bbf89;
 }
 
 .btn-success:not(:disabled):not(.disabled):focus,
@@ -107,7 +120,7 @@ body {
 .btn-primary {
   color: #949ba2;
   background-color: transparent;
-  border-color: #0f83c9;
+  border: 2px solid #0f83c9;
 }
 
 .btn-primary:not(:disabled):not(.disabled):focus,
@@ -136,7 +149,7 @@ body {
 .btn-default {
   color: #949ba2;
   background-color: transparent;
-  border-color: #616779;
+  border: 2px solid #616779;
 }
 
 .btn-default:not(:disabled):not(.disabled):focus,

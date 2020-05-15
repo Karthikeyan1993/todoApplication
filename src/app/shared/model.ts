@@ -1,6 +1,7 @@
 interface ColumnDef {
   prop:string,
-  displayName:string
+  displayName:string,
+  width?:number
 }
 
 interface Todo {

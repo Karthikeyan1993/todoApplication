@@ -9,6 +9,7 @@ import {Todo, ColumnDef} from '../shared/model';
 export class DataGridComponent implements OnInit {
   @Input() todoList: Todo[];
   @Input() columnDefs: ColumnDef[];
+  row=-1;
 
   constructor() {
   }

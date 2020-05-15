@@ -10,16 +10,6 @@
 .flag-medium{
   color: var(--clr-primary);
 }
-.badge{
-  font-size: 100%;
-  font-weight: normal;
-}
-.badge-danger{
-  background-color: var(--tomato) !important;
-}
-.badge-success{
-  background-color: var(--clr-green) !important;
-}
-.badge-primary{
-  background-color: var(--clr-primary) !important;
+.action-icons{
+  font-size: 18px;
 }

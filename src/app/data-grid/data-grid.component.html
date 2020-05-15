@@ -1,13 +1,13 @@
-<table class="table table-dark">
+<table class="table table-hover table-dark">
   <thead>
   <tr>
-    <th *ngFor="let col of columnDefs">
+    <th *ngFor="let col of columnDefs" [ngStyle]="{'width.%':col.width? col.width:0}">
       <span>{{col.displayName}}</span>
     </th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let todo of todoList">
+  <tr *ngFor="let todo of todoList; let i = index;" (mouseover)="row=i" (mouseleave)="row=-1">
     <td>{{todo.id}}</td>
     <td>{{todo.name}}</td>
     <td>{{todo.tag}}</td>
@@ -15,6 +15,11 @@
               [ngClass]="getPriorityClass(todo.priority)"></span>{{todo.priority}}</td>
     <td><span class="badge" [ngClass]="getStatusClass(todo.status)">{{todo.status}}</span></td>
     <td>{{todo.duedate}}</td>
+    <td *ngIf="row!=i"></td>
+    <td *ngIf="row==i">
+          <span class="fa fa-pencil-square-o action-icons pr-2" aria-hidden="true"></span>
+          <span class="fa fa-trash-o action-icons" aria-hidden="true"></span>
+    </td>
   </tr>
   </tbody>
 </table>
