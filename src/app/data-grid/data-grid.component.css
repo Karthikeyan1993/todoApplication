@@ -13,3 +13,9 @@
 .action-icons{
   font-size: 18px;
 }
+.sort-icon{
+  color: var(--tomato);
+}
+.fa-frown-o{
+  font-size:16px;
+}

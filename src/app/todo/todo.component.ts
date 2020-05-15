@@ -11,6 +11,7 @@ import {TodoService} from '../todo.service';
 export class TodoComponent implements OnInit {
   todoList: Todo[] = [];
   columnDefs: ColumnDef[] = [];
+  status = '';
 
   constructor(private todoService: TodoService) {
   }
@@ -45,5 +46,7 @@ export class TodoComponent implements OnInit {
       return this.todoList.filter(ele => ele.status == status).length;
     }
   }
+
+  filterData=status=> this.status = status;
 
 }

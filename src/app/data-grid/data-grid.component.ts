@@ -7,14 +7,21 @@ import {Todo, ColumnDef} from '../shared/model';
   styleUrls: ['./data-grid.component.css']
 })
 export class DataGridComponent implements OnInit {
-  @Input() todoList: Todo[];
+  todoDataSource: Todo[];
   @Input() columnDefs: ColumnDef[];
+  @Input() height;
   row=-1;
-
+  prop = '';
+  orderBy = "asc";
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  @Input()
+  set todoList(data: Todo[]) {
+    this.todoDataSource = [...data];
   }
 
   getPriorityClass = val => {
@@ -32,6 +39,18 @@ export class DataGridComponent implements OnInit {
       'badge-primary': val === 'In Progress'
     }
   }
+  doOrder = (prop: string) => {
+    this.prop = prop;
+    this.orderBy = this.orderBy == "asc" ? "desc" : "asc";
+  };
+
+  getClass = prop => {
+    return {
+      "fa-sort": prop != this.prop,
+      "fa-caret-up": prop == this.prop && this.orderBy == "asc",
+      "fa-caret-down": prop == this.prop && this.orderBy == "desc"
+    };
+  };
 
   deleteTodo = (id):void =>{
     console.log(id);
