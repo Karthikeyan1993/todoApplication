@@ -33,4 +33,8 @@ export class DataGridComponent implements OnInit {
     }
   }
 
+  deleteTodo = (id):void =>{
+    console.log(id);
+  }
+
 }

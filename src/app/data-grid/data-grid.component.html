@@ -18,7 +18,7 @@
     <td *ngIf="row!=i"></td>
     <td *ngIf="row==i">
           <span class="fa fa-pencil-square-o action-icons pr-2" aria-hidden="true"></span>
-          <span class="fa fa-trash-o action-icons" aria-hidden="true"></span>
+          <span (click)="deleteTodo(todo.id)" class="fa fa-trash-o action-icons" aria-hidden="true"></span>
     </td>
   </tr>
   </tbody>

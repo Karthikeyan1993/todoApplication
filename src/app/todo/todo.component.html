@@ -2,13 +2,13 @@
   <div class="col-sm-12 col-md-12 col-lg-12 pl-0">
       <ul class="list-inline pt-2">
         <li class="list-inline-item">
-          <a href="javascript:void(0)" class="btn btn-default btn-rounded btn-sm">All <span class="badge badge-light">4</span></a></li>
+          <a href="javascript:void(0)" class="btn btn-default btn-rounded btn-sm">All <span class="badge badge-light" [innerHTML]="getBadgeCount('All')"></span></a></li>
         <li class="list-inline-item">
-          <a href="javascript:void(0)" class="btn btn-primary btn-rounded btn-sm">In Progress<span class="badge badge-primary">2</span></a></li>
+          <a href="javascript:void(0)" class="btn btn-primary btn-rounded btn-sm">In Progress<span class="badge badge-primary" [innerHTML]="getBadgeCount('In Progress')"></span></a></li>
         <li class="list-inline-item">
-          <a href="javascript:void(0)" class="btn btn-success btn-rounded btn-sm">Completed<span class="badge badge-success">1</span></a></li>
+          <a href="javascript:void(0)" class="btn btn-success btn-rounded btn-sm">Completed<span class="badge badge-success" [innerHTML]="getBadgeCount('Completed')"></span></a></li>
         <li class="list-inline-item">
-          <a href="javascript:void(0)" class="btn btn-danger btn-rounded btn-sm">Overdue<span class="badge badge-danger">4</span></a></li>
+          <a href="javascript:void(0)" class="btn btn-danger btn-rounded btn-sm">Overdue<span class="badge badge-danger" [innerHTML]="getBadgeCount('Overdue')"></span></a></li>
         <li class="list-inline-item pull-right">
           <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
         </li>
