@@ -7,7 +7,7 @@ import {Todo, ColumnDef} from '../shared/model';
   styleUrls: ['./data-grid.component.css']
 })
 export class DataGridComponent implements OnInit {
-  todoDataSource: Todo[];
+  @Input() todoList: Todo[];
   @Input() columnDefs: ColumnDef[];
   @Input() height;
   row=-1;
@@ -17,11 +17,6 @@ export class DataGridComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  @Input()
-  set todoList(data: Todo[]) {
-    this.todoDataSource = [...data];
   }
 
   getPriorityClass = val => {

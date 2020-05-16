@@ -9,31 +9,26 @@
     </tr>
     </thead>
     <tbody>
-    <ng-container *ngTemplateOutlet="todoDataSource.length>0 ? hasData : noData"></ng-container>
-    <ng-template #hasData>
-      <tr *cdkVirtualFor="let todo of todoDataSource | dataSort:orderBy:prop; let i = index;" (mouseover)="row=i"
-          (mouseleave)="row=-1">
-        <td>{{todo.id}}</td>
-        <td>{{todo.name}}</td>
-        <td>{{todo.tag}}</td>
-        <td><span class="fa fa-flag pr-1" aria-hidden="true"
-                  [ngClass]="getPriorityClass(todo.priority)"></span>{{todo.priority}}</td>
-        <td><span class="badge" [ngClass]="getStatusClass(todo.status)">{{todo.status}}</span></td>
-        <td>{{todo.duedate}}</td>
-        <td *ngIf="row!=i"></td>
-        <td *ngIf="row==i">
-          <span class="fa fa-pencil-square-o action-icons pr-2" aria-hidden="true"></span>
-          <span (click)="deleteTodo(todo.id)" class="fa fa-trash-o action-icons" aria-hidden="true"></span>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template #noData>
-      <tr>
-        <td class="text-center" [attr.colspan]="columnDefs.length">
-          Oops! No Result Found <span><i class="fa fa-meh-o pl-1" aria-hidden="true"></i></span>
-        </td>
-      </tr>
-    </ng-template>
+    <tr *cdkVirtualFor="let todo of todoList | dataSort:orderBy:prop; let i = index;" (mouseover)="row=i"
+        (mouseleave)="row=-1">
+      <td>{{todo.id}}</td>
+      <td>{{todo.name}}</td>
+      <td>{{todo.tag}}</td>
+      <td><span class="fa fa-flag pr-1" aria-hidden="true"
+                [ngClass]="getPriorityClass(todo.priority)"></span>{{todo.priority}}</td>
+      <td><span class="badge" [ngClass]="getStatusClass(todo.status)">{{todo.status}}</span></td>
+      <td>{{todo.duedate}}</td>
+      <td *ngIf="row!=i"></td>
+      <td *ngIf="row==i">
+        <span class="fa fa-pencil-square-o action-icons pr-2" aria-hidden="true"></span>
+        <span (click)="deleteTodo(todo.id)" class="fa fa-trash-o action-icons" aria-hidden="true"></span>
+      </td>
+    </tr>
+    <tr *ngIf="todoList.length==0">
+      <td class="text-center" [attr.colspan]="columnDefs.length">
+        Oops! No Result Found <span><i class="fa fa-meh-o pl-1" aria-hidden="true"></i></span>
+      </td>
+    </tr>
     </tbody>
   </table>
 </cdk-virtual-scroll-viewport>
