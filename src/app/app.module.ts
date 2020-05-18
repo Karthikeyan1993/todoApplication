@@ -12,6 +12,8 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DataGridComponent} from './data-grid/data-grid.component';
 import {DataSortPipe} from './data-sort.pipe';
 import {DataFilterPipe} from './data-filter.pipe';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {DataFilterPipe} from './data-filter.pipe';
     PageNotFoundComponent,
     DataGridComponent,
     DataSortPipe,
-    DataFilterPipe
+    DataFilterPipe,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
