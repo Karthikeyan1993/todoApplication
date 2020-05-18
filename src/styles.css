@@ -230,3 +230,104 @@ body {
   border-width: 1px;
   width: 10px
 }
+
+
+/* start signup and signin */
+.login-section .panel {
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	color: #949ba2;
+	border-radius: 3px;
+}
+.login-section .panel.panel-filled {
+	background-color: rgba(68, 70, 79, 0.5);
+}
+.login-section .panel .panel-body {
+	padding: 5px 15px 15px 15px;
+}
+.login-section .panel.panel-filled .panel-body {
+	padding-top: 10px;
+}
+.login-section .panel .panel-footer {
+	background-color: transparent;
+	border: none;
+}
+.login-section .panel>.panel-heading {
+	color: #ffffff;
+}
+.login-section label {
+    color: #ffffff;
+    font-weight: 500;
+}
+.login-section .help-block {
+    color: #6d757d;
+}
+.login-section .form-control {
+	color: #949ba2;
+	border: none;
+	border-radius: 4px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: none;
+	-o-transition: none;
+	transition: none;
+	background-color: #494b54;
+}
+.login-section .form-control:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.login-section .btn-space {
+    margin-right: 5px;
+}
+.login-section .btn-accent {
+  color: #949ba2;
+  background-color: transparent;
+  border-color: #f6a821;
+}
+.login-section .btn-accent:focus,.login-section  .btn-accent.focus {
+  color: #ffffff;
+  background-color: rgba(246, 168, 33, 0.1);
+  border-color: #f6a821;
+  outline: 0;
+  box-shadow: none;
+}
+.login-section .btn-accent:hover {
+  color: #ffffff;
+  background-color: rgba(246, 168, 33, 0.1);
+  border-color: #f6a821;
+}
+.login-section .btn-accent:active, 
+.login-section .btn-accent.active,
+.login-section  .open > .login-section .dropdown-toggle.btn-accent {
+  color: #ffffff;
+  background-color: rgba(246, 168, 33, 0.1);
+  border-color: #f6a821;
+}
+.login-section.container-center {
+    max-width: 400px;
+    margin: 3% auto 0;
+    padding: 20px;
+}
+.login-section.container-center.lg {
+    max-width: 800px;
+}
+.login-section .view-header {
+    margin: 20px 0;
+    min-height: 50px;
+    padding: 0 15px;
+}
+.login-section .view-header .header-icon {
+    font-size: 60px;
+    color: #f6a821;
+    width: 68px;
+    float: left;
+    margin-top: -8px;
+    line-height: 0;
+}
+.login-section .view-header .header-title {
+    margin-left: 68px;
+}
+/* end signup and signin */
