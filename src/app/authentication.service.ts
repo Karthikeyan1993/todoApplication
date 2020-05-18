@@ -5,7 +5,6 @@ import {AppSettings} from './shared/AppSettings';
   providedIn: 'root'
 })
 export class AuthenticationService {
-
   constructor() {
   }
 

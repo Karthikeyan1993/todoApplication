@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, Validator } from '@angular/forms';
-import { AuthService } from '../auth.service';
-// import { Login } from '../../entity/login';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators, Validator} from '@angular/forms';
+import {AuthService} from '../auth.service';
+import {JwtAuthenticationResponse, SignInRequest} from '../shared/model';
+import {Router} from '@angular/router';
+import {AppSettings} from "../shared/AppSettings";
 
 @Component({
   selector: 'app-sign-in',
@@ -11,30 +12,35 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
   loginFrm: FormGroup
-  message = null;
-  constructor(private fb: FormBuilder, private _Auth: AuthService, private _Router: Router) { }
+  message;
+
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+  }
 
   ngOnInit() {
     this.loginFrm = this.fb.group({
-      username: ['', Validators.required],
+      userNameOrEmail: ['', Validators.required],
       password: ['', Validators.required
       ]
     });
   }
 
-  submit = (e) => {
-    localStorage.setItem('todoAuthToken', 'this is token');
-    this._Router.navigate(['todo']);
-    // if (this.loginFrm.valid) {
-    //   const form: Login = this.loginFrm.value;
-    //   const res: any = this._Auth.isPermitted(form);
-    //   if (res.flag) {
-    //     this._Router.navigate(['welcome'])
-    //   } else {
-    //     this.message = res.message;
-    //   }
-    // } else {
-    //   this.message = 'Please provide your credentials to login.';
-    // }
+  submit = (event): void => {
+    if (!this.loginFrm.invalid) {
+      const param: SignInRequest = this.loginFrm.value;
+      this.auth.signIn(param).subscribe((response: JwtAuthenticationResponse) => {
+        this.handleToken(response);
+        this.auth.isLoggedIn.next(true);
+      }, (error => {
+        console.log(error);
+      }));
+    }
+  }
+
+  private handleToken = (tokenResponse:JwtAuthenticationResponse):void=>{
+    if (!localStorage.getItem(AppSettings.LOCAL_AUTH_TOKEN)){
+      localStorage.setItem(AppSettings.LOCAL_AUTH_TOKEN,tokenResponse.accessToken);
+      this.router.navigate(['todo']).then(r => console.log("User Token Received Successfully",r));
+    }
   }
 }

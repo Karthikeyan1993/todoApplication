@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {ScrollDispatcher, ScrollingModule} from '@angular/cdk/scrolling';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -15,6 +15,7 @@ import {DataSortPipe} from './data-sort.pipe';
 import {DataFilterPipe} from './data-filter.pipe';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import {HttpInterceptorService} from "./http-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ScrollDispatcher],
+  providers: [ScrollDispatcher,{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

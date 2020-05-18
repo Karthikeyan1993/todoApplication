@@ -33,11 +33,16 @@ interface JwtAuthenticationResponse  {
   tokenType:string
 }
 
+interface UserDetailResponse {
+  username:string;
+}
+
 export {
   Todo,
   ColumnDef,
   TodoRequest,
   SignInRequest,
   SignUpRequest,
-  JwtAuthenticationResponse
+  JwtAuthenticationResponse,
+  UserDetailResponse
 }

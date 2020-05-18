@@ -5,3 +5,10 @@
 .fa{
   color: var(--tomato);
 }
+.user-block{
+  font-size: 18px;
+}
+.user-block .user-name{
+  position: relative;
+  top: -4px;
+}
