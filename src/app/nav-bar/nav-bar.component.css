@@ -1,7 +1,6 @@
 .bg-dark{
   background-color: var(--bg-dark) !important;
 }
-
 .fa{
   color: var(--tomato);
 }
@@ -10,5 +9,5 @@
 }
 .user-block .user-name{
   position: relative;
-  top: -4px;
+  top: 0px;
 }

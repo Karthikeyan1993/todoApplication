@@ -16,6 +16,8 @@ import {DataFilterPipe} from './data-filter.pipe';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {HttpInterceptorService} from "./http-interceptor.service";
+import {SharedModule} from "./shared/shared.module";
+import {PopoverModule} from "ngx-bootstrap/popover";
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {HttpInterceptorService} from "./http-interceptor.service";
     ScrollingModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+    PopoverModule.forRoot()
   ],
   providers: [ScrollDispatcher,{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]

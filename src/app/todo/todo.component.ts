@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ColumnDef} from '../shared/model';
 import {Todo} from '../shared/model';
 import {TodoService} from '../todo.service';
+import {BsModalService, BsModalRef} from "ngx-bootstrap/modal";
+import {TaskComponent} from '../task/task.component';
 
 @Component({
   selector: 'app-todo',
@@ -12,8 +14,9 @@ export class TodoComponent implements OnInit {
   todoList: Todo[] = [];
   columnDefs: ColumnDef[] = [];
   status = '';
+  bsTaskModalRef: BsModalRef = null;
 
-  constructor(private todoService: TodoService) {
+  constructor(private todoService: TodoService, private bsModelService: BsModalService) {
   }
 
   ngOnInit(): void {
@@ -47,6 +50,19 @@ export class TodoComponent implements OnInit {
     }
   }
 
-  filterData=status=> this.status = status;
+  deleteTodo = id => {
+    this.todoService.deleteTodo(id)
+      .subscribe((res) => {
+        this.getAllTodos();
+      });
+  }
+
+  openTaskComp=(param?:any):void=>{
+    this.bsTaskModalRef = this.bsModelService.show(TaskComponent,{
+      class: 'modal-lg'
+    })
+}
+
+  filterData = status => this.status = status;
 
 }

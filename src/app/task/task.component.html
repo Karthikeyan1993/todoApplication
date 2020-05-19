@@ -1,1 +1,30 @@
-<p>task works!</p>
+<div class="modal-body">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)]="taskName" placeholder="e.g. Hackerearth coding challenge "/>
+    <div class="input-group-append">
+      <button class="btn btn-danger btn-sm">
+        Choose Date
+      </button>
+    </div>
+  </div>
+  <div class="actions">
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <button class="btn btn-danger btn-rounded btn-sm">Add Task</button>
+      </li>
+      <li class="list-inline-item">
+        <a href="javascript:void(0)" (click)="bsModalRef.hide()" class="btn btn-default btn-rounded btn-sm">Cancel</a>
+      </li>
+      <li class="list-inline-item pull-right">
+        <button class="btn btn-sm btn-span" #pop1="bs-popover" [outsideClick]="true" [popover]="tag" placement="bottom"><span class="fa fa-tag"  aria-hidden="true"></span></button>
+        <button class="btn btn-sm btn-span"><span class="fa fa-flag" aria-hidden="true"></span></button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<ng-template #tag>
+    <ul class="tag-dropdown">
+      <li (click)="onTagSelected(tag);pop1.hide()" [ngClass]="selectedTag==tag?'tag-active':''" *ngFor="let tag of tags" class="tag-dropdown-item" [value]="tag"><span class="fa fa-tag pr-2" aria-hidden="true"></span>{{tag}}</li>
+    </ul>
+</ng-template>

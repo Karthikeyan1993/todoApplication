@@ -1,5 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input , EventEmitter,Output} from '@angular/core';
 import {Todo, ColumnDef} from '../shared/model';
+import {TodoService} from "../todo.service";
 
 @Component({
   selector: 'app-data-grid',
@@ -13,6 +14,7 @@ export class DataGridComponent implements OnInit {
   row=-1;
   prop = '';
   orderBy = "asc";
+  @Output()deleteEmitter:EventEmitter<string> = new EventEmitter<string>();
   constructor() {
   }
 
@@ -48,7 +50,7 @@ export class DataGridComponent implements OnInit {
   };
 
   deleteTodo = (id):void =>{
-    console.log(id);
+    this.deleteEmitter.emit(id);
   }
 
 }

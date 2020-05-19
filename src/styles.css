@@ -364,3 +364,40 @@ body {
 }
 
 /* end signup and signin */
+.modal-content {
+  background-color: #282828;
+  border: 1px solid #171717;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.modal-content .modal-body {
+  padding: 40px;
+}
+.modal-backdrop.in {
+  filter: alpha(opacity=10);
+  opacity: 0.1;
+}
+
+.popover{
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--body-cl);
+  background-color: #282828;
+  border: 1px solid #171717;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.bs-popover-top .arrow::after,
+.bs-popover-auto[x-placement^="top"] .arrow::after {
+  border-top-color: #282828 !important;
+}
+.bs-popover-auto[x-placement^=bottom]>.arrow::after, .bs-popover-bottom>.arrow::after {
+  top: 1px;
+  border-width: 0 .5rem .5rem .5rem;
+  border-top-color: #282828 !important;
+}
+
+.bs-popover-auto[x-placement^=bottom]>.arrow::after, .bs-popover-bottom>.arrow::after {
+  top: 1px;
+  border-width: 0 .5rem .5rem .5rem;
+  border-bottom-color: #282828 !important;
+}
