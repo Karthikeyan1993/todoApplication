@@ -14,23 +14,25 @@
       <div class="card-body">
          <form [formGroup]="loginFrm" (ngSubmit)="submit($event)" autocomplete="off">
             <div class="form-group">
-               <label for="userNameOrEmail">Username Or Email</label>
+               <label for="userNameOrEmail">Username Or Email<span class="pl-1 required">*</span></label>
                <input name="userNameOrEmail" placeholder="example@gmail.com" id="userNameOrEmail" type="text" formControlName="userNameOrEmail" class="form-control">
                <span class="help-block small">Your unique username to app</span>
             </div>
             <div class="form-group">
-               <label for="password">Password</label>
+               <label for="password">Password<span class="pl-1 required">*</span></label>
                <input type="password" id="password" placeholder="******" formControlName="password" class="form-control">
                <span class="help-block small">Your strong password</span>
             </div>
             <div>
                 <button type="submit" class="btn btn-danger btn-rounded btn-sm mr-2">Login<span class="fa fa-sign-in pl-1" aria-hidden="true"></span></button>
-                <a routerLink="signup" class="btn btn-default btn-sm btn-rounded">Register</a>
+                <a routerLink="/signup" class="btn btn-default btn-sm btn-rounded">Register<span aria-hidden="true" class="fa fa-user-plus pl-1"></span></a>
             </div>
          </form>
       </div>
    </div>
-   <div class="message-block" *ngIf="!loginFrm.valid && message || loginFrm.valid && message">
-     <p [innerHtml]="message"></p>
-   </div>
+  <div class="card mt-2" *ngIf="errors.length>0" style="background-color: rgba(219, 82, 75, 0.1);">
+    <div class="card-body">
+        <span [innerHTML]="message" style="color: #EF3D4F"></span>
+    </div>
+  </div>
 </div>

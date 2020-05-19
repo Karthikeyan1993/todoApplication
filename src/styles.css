@@ -297,6 +297,11 @@ body {
   background-color: var(--txt-fill-bg);
 }
 
+.required{
+  color: #EF3D4F;
+}
+
+
 /*.login-section .btn-space {*/
 /*  margin-right: 5px;*/
 /*}*/

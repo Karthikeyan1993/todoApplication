@@ -14,7 +14,11 @@ interface Todo {
 }
 
 interface TodoRequest{
-
+  name:string,
+  priority:string,
+  status: string,
+  tag: string
+  duedate:Date
 }
 
 interface SignInRequest {

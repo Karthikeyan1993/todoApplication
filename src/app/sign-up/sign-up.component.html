@@ -1,64 +1,46 @@
 <div class="login-section container-center lg">
-	<div class="view-header">
-		<div class="header-icon">
-			<span class="fa fa-user-plus" aria-hidden="true"></span>
-      </div>
-      <div class="header-title">
-         <h3>Sign Up</h3>
-         <small>
-         Please enter your data to sign up.
-         </small>
-      </div>
-   </div>
-   <div class="panel panel-filled">
-      <div class="panel-body">
-         <p>
-         </p>
-         <form autocomplete="off" [formGroup]="signUp" (ngSubmit)="submit($event)">
-            <div class="row">
-               <div class="form-group col-lg-6">
-                  <label>Username</label>
-                  <input type="text" class="form-control" name="username" formControlName="username">
-                            </div>
-               <div class="form-group col-lg-6">
-                  <label>Name</label>
-                  <input type="text" class="form-control" name="name" formControlName="name">
-                 
-               </div>
-               <div class="form-group col-lg-6">
-                  <label>Email</label>
-                  <input email class="form-control" name="email" formControlName="email">
-                  <span *ngIf="signUp.controls['email'].errors?.email" class="help-block small message-block">Invalid email address</span>
-               </div>
-               <div class="form-group col-lg-6">
-                  <label>Mobile</label>
-                  <input class="form-control" name="mobile" formControlName="mobile">
-                  <span *ngIf="signUp.controls['mobile'].errors?.pattern" class="help-block small message-block">Invalid mobile number</span>
-               </div>
-               <div class="form-group col-lg-6">
-                  <label>Password</label>
-                  <input type="password" class="form-control" name="password" formControlName="password">
-                  <span *ngIf="signUp.controls['password'].errors?.minlength" class="help-block small message-block">password should be minium 8 characters</span>
-                  <span *ngIf="signUp.controls['password'].errors?.pattern" class="help-block small message-block">password should be  alphanumerics</span>
-               </div>
-               <div class="form-group col-lg-6">
-                  <label>Repeat Password</label>
-                  <input type="password" class="form-control" name="repeatpassword" formControlName="repeatpassword">
-               </div>
-               <div class="form-group col-lg-6">
-                  <label>Address</label>
-                  <input class="form-control" name="address" formControlName="address">
-                  <span *ngIf="signUp.controls['address'].errors?.maxlength" class="help-block small message-block">  Address must be less than 30 characters.</span>
-               </div>
-            </div>
-            <div>
-               <button class="btn btn-accent btn-space">Register</button>
-               <a class="btn btn-default" routerLink="../signin">Login</a>
-            </div>
-         </form>
-      </div>
-   </div>
-      <div class="message-block" *ngIf="!signUp.valid && message || signUp.valid && message">
-     <p [innerHtml]="message"></p>
-   </div>
+  <div class="view-header">
+    <div class="header-icon">
+      <span aria-hidden="true" class="fa fa-user-plus"></span>
+    </div>
+    <div class="ml-2 header-title">
+      <h3>Sign Up</h3>
+      <small class="help-block small">Please enter your data to sign up.</small>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <form (ngSubmit)="submit($event)" [formGroup]="signUp" autocomplete="off" autocomplete="off">
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <label for="username">Username<span class="pl-1 required">*</span></label>
+            <input (blur)="checkUserNameAlreadyAvailable('username')" class="form-control" placeholder="xxxxxxxx" formControlName="username" id="username" name="username" type="text">
+            <span class="help-block small">Your unique username to app</span>
+          </div>
+          <div class="form-group col-lg-6">
+            <label for="email">Email<span class="pl-1 required">*</span></label>
+            <input (blur)="checkEmailAlreadyAvailable('email')" [email] class="form-control" placeholder="example@gmail.com" formControlName="email" id="email" name="email">
+            <span class="help-block small">Your address email to contact</span>
+          </div>
+          <div class="form-group col-lg-6">
+            <label for="password">Password<span class="pl-1 required">*</span></label>
+            <input class="form-control" placeholder="******" formControlName="password" id="password" name="password" type="password">
+            <span class="help-block small">Your hard to guess password</span>
+          </div>
+          <div class="form-group col-lg-6">
+            <label for="repeatpassword">Repeat Password<span class="pl-1 required">*</span></label>
+            <input class="form-control" placeholder="******" formControlName="repeatpassword" id="repeatpassword" name="repeatpassword"
+                   type="password">
+            <span class="help-block small">Please repeat your password</span>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-danger btn-rounded btn-sm">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="!signUp.valid && message || signUp.valid && message" class="message-block">
+    <p [innerHtml]="message"></p>
+  </div>
 </div>

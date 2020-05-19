@@ -13,6 +13,7 @@ import {AppSettings} from "../shared/AppSettings";
 export class SignInComponent implements OnInit {
   loginFrm: FormGroup
   message;
+  errors = [];
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
   }
@@ -32,15 +33,33 @@ export class SignInComponent implements OnInit {
         this.handleToken(response);
         this.auth.isLoggedIn.next(true);
       }, (error => {
-        console.log(error);
+        this.errors = [];
+        this.errors.push(error.statusText);
+        this.message = error.statusText;
       }));
+    } else {
+      this.collectErrors(this.loginFrm);
     }
   }
 
-  private handleToken = (tokenResponse:JwtAuthenticationResponse):void=>{
-    if (!localStorage.getItem(AppSettings.LOCAL_AUTH_TOKEN)){
-      localStorage.setItem(AppSettings.LOCAL_AUTH_TOKEN,tokenResponse.accessToken);
-      this.router.navigate(['todo']).then(r => console.log("User Token Received Successfully",r));
+
+  collectErrors = (form?: FormGroup) => {
+    for (let ele in form.controls) {
+      if (form.controls[ele].status == "INVALID") {
+        if ('required' in form.controls[ele].errors) {
+          this.errors.push(ele);
+        }
+      }
+    }
+    if (this.errors.length > 0) {
+      this.message = "Please provide all marked <span class='p-1 required'>*</span> information";
+    }
+  }
+
+  private handleToken = (tokenResponse: JwtAuthenticationResponse): void => {
+    if (!localStorage.getItem(AppSettings.LOCAL_AUTH_TOKEN)) {
+      localStorage.setItem(AppSettings.LOCAL_AUTH_TOKEN, tokenResponse.accessToken);
+      this.router.navigate(['todo']).then(r => console.log("User Token Received Successfully", r));
     }
   }
 }
