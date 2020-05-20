@@ -193,6 +193,13 @@ label {
   border-color: #EF3D4F;
 }
 
+.btn-danger.disabled, .btn-danger:disabled {
+  color: #fff;
+  background-color: rgba(219, 82, 75, 0.1);
+  cursor: not-allowed;
+  border-color: #EF3D4F;
+}
+
 .btn-success {
   color: #949ba2;
   background-color: transparent;

@@ -10,18 +10,22 @@ import {Observable, throwError} from 'rxjs';
 import {map, catchError} from 'rxjs/operators';
 import {AuthenticationService} from "./authentication.service";
 import {AppSettings} from './shared/AppSettings';
+import {LoadingSpinnerService} from "./loading-spinner.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpInterceptorService {
 
-  constructor(private auth: AuthenticationService) {
+  constructor(private auth: AuthenticationService, private loadingSpinnerService: LoadingSpinnerService) {
   }
 
   intercept(
     req: HttpRequest<any>, next: HttpHandler
   ): Observable<HttpEvent<any>> {
+
+    this.loadingSpinnerService.show();
+
     if (this.auth.isAuthenticated()) {
       req = req.clone({
         headers: req.headers.set(AppSettings.HEADER_STRING, AppSettings.TOKEN_PREFIX + localStorage.getItem(AppSettings.LOCAL_AUTH_TOKEN))
@@ -29,12 +33,12 @@ export class HttpInterceptorService {
     }
     return next.handle(req).pipe(map((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
-        console.log("response received successfully");
+        this.loadingSpinnerService.hide();
       }
       return event;
     }), catchError((error: HttpErrorResponse) => {
-      console.error("http request failed--->>>", req.url);
       return throwError(error);
+      this.loadingSpinnerService.hide();
     }));
   }
 }

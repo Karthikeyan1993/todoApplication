@@ -24,7 +24,7 @@
                <span class="help-block small">Your strong password</span>
             </div>
             <div>
-                <button type="submit" class="btn btn-danger btn-rounded btn-sm mr-2">Login<span class="fa fa-sign-in pl-1" aria-hidden="true"></span></button>
+                <button type="submit" [disabled]="loginFrm.invalid" class="btn btn-danger btn-rounded btn-sm mr-2">Login<span class="fa fa-sign-in pl-1" aria-hidden="true"></span></button>
                 <a routerLink="/signup" class="btn btn-default btn-sm btn-rounded">Register<span aria-hidden="true" class="fa fa-user-plus pl-1"></span></a>
             </div>
          </form>

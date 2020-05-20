@@ -3,15 +3,14 @@
     <input [(ngModel)]="taskName" class="form-control" placeholder="e.g. Hackerearth coding challenge " type="text"/>
     <div class="input-group-append">
       <button #pop3="bs-popover" [outsideClick]="true" [popover]="calendarTemp" class="btn btn-danger btn-sm"
-              placement="bottom">
-        Choose Date
+              placement="bottom" [innerHTML]=" selectedDate | date:'EEE dd'">
       </button>
     </div>
   </div>
   <div class="actions">
     <ul class="list-inline">
       <li class="list-inline-item">
-        <button class="btn btn-danger btn-rounded btn-sm">Add Task</button>
+        <button (click)="saveNewTask($event)" [disabled]="taskName.length<2" class="btn btn-danger btn-rounded btn-sm">Add Task</button>
       </li>
       <li class="list-inline-item">
         <a (click)="bsModalRef.hide()" class="btn btn-default btn-rounded btn-sm" href="javascript:void(0)">Cancel</a>
@@ -19,10 +18,10 @@
       <li class="list-inline-item pull-right">
         <button #pop1="bs-popover" [outsideClick]="true" [popover]="tagTemp" class="btn btn-sm btn-span"
                 placement="bottom">
-          <span aria-hidden="true" class="fa fa-tag"></span></button>
+          <span aria-hidden="true" [ngClass]="util.getTagClass(selectedTag)" class="fa fa-tag"></span></button>
         <button #pop2="bs-popover" [outsideClick]="true" [popover]="priorityTemp" class="btn btn-sm btn-span"
                 placement="bottom"><span
-          aria-hidden="true" class="fa fa-flag"></span></button>
+          aria-hidden="true" [ngClass]="util.getPriorityClass(selectedPriority)" class="fa fa-flag"></span></button>
       </li>
     </ul>
   </div>
@@ -32,7 +31,7 @@
 <ng-template #tagTemp>
   <ul class="tag-dropdown">
     <li (click)="onTagSelected(tag);pop1.hide()" *ngFor="let tag of tags" [ngClass]="selectedTag==tag?'tag-active':''"
-        [value]="tag" class="tag-dropdown-item"><span [ngClass]="getTagClass(tag)" aria-hidden="true"
+        [value]="tag" class="tag-dropdown-item"><span [ngClass]="util.getTagClass(tag)" aria-hidden="true"
                                                       class="fa fa-tag pr-2"></span>{{tag}}</li>
   </ul>
 </ng-template>
@@ -42,7 +41,7 @@
   <ul class="priority-dropdown">
     <li (click)="onPrioritySelected(priority);pop2.hide()" *ngFor="let priority of priorities"
         [ngClass]="selectedPriority==priority?'priority-active':''" [value]="priority" class="priority-dropdown-item">
-      <span [ngClass]="getPriorityClass(priority)" aria-hidden="true" class="fa fa-flag pr-1"></span>{{priority}}
+      <span [ngClass]="util.getPriorityClass(priority)" aria-hidden="true" class="fa fa-flag pr-1"></span>{{priority}}
     </li>
   </ul>
 </ng-template>
@@ -50,7 +49,7 @@
 <!--Calendar Window Template-->
 <ng-template #calendarTemp>
   <ul class="calendar-dropdown" style="border-bottom: 1px solid #6d757d">
-    <li *ngFor="let dt of dates" [ngClass]="selectedDate==dt?'date-active':''" [value]="dt.value"
+    <li (click)="onDateSelected(dt.value)" *ngFor="let dt of dates" [ngClass]="selectedDate==dt?'date-active':''" [value]="dt.value"
         class="calendar-dropdown-item">
       <span aria-hidden="true" class="fa fa-calendar-check-o pr-2"></span>{{dt.label}}
       <span class="pull-right">{{dt.value | date:'EEE dd'}}</span>

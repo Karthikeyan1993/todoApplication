@@ -13,10 +13,10 @@
         (mouseleave)="row=-1">
       <td>{{todo.id}}</td>
       <td>{{todo.name}}</td>
-      <td><span class="fa fa-tag pr-1" style="color:gold" aria-hidden="true"></span>{{todo.tag}}</td>
+      <td><span class="fa fa-tag pr-1" [ngClass]="util.getTagClass(todo.tag)" aria-hidden="true"></span>{{todo.tag}}</td>
       <td><span class="fa fa-flag pr-1" aria-hidden="true"
-                [ngClass]="getPriorityClass(todo.priority)"></span>{{todo.priority}}</td>
-      <td><span class="badge" [ngClass]="getStatusClass(todo.status)">{{todo.status}}</span></td>
+                [ngClass]="util.getPriorityClass(todo.priority)"></span>{{todo.priority}}</td>
+      <td><span class="badge" [ngClass]="util.getStatusClass(todo.status)">{{todo.status}}</span></td>
       <td>{{todo.duedate}}</td>
       <td *ngIf="row!=i"></td>
       <td *ngIf="row==i">

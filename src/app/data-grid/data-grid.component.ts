@@ -1,6 +1,7 @@
-import {Component, OnInit, Input , EventEmitter,Output} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {Todo, ColumnDef} from '../shared/model';
 import {TodoService} from "../todo.service";
+import {Util} from '../shared/Util';
 
 @Component({
   selector: 'app-data-grid',
@@ -11,31 +12,17 @@ export class DataGridComponent implements OnInit {
   @Input() todoList: Todo[];
   @Input() columnDefs: ColumnDef[];
   @Input() height;
-  row=-1;
+  row = -1;
   prop = '';
   orderBy = "asc";
-  @Output()deleteEmitter:EventEmitter<string> = new EventEmitter<string>();
+  @Output() deleteEmitter: EventEmitter<string> = new EventEmitter<string>();
+  util = Util;
   constructor() {
   }
 
   ngOnInit(): void {
   }
 
-  getPriorityClass = val => {
-    return {
-      'flag-high': val === 'High',
-      'flag-medium': val === 'Medium',
-      'flag-low': val === 'Low'
-    }
-  }
-
-  getStatusClass = val => {
-    return {
-      'badge-danger': val === 'Overdue',
-      'badge-success': val === 'Completed',
-      'badge-primary': val === 'In Progress'
-    }
-  }
   doOrder = (prop: string) => {
     this.prop = prop;
     this.orderBy = this.orderBy == "asc" ? "desc" : "asc";
@@ -49,7 +36,7 @@ export class DataGridComponent implements OnInit {
     };
   };
 
-  deleteTodo = (id):void =>{
+  deleteTodo = (id): void => {
     this.deleteEmitter.emit(id);
   }
 

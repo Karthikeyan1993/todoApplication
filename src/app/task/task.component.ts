@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {BsModalRef} from "ngx-bootstrap/modal";
 import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
+import {TodoService} from "../todo.service";
+import {TodoRequest} from "../shared/model";
+import {Util} from "../shared/Util";
 
 @Component({
   selector: 'app-task',
@@ -14,23 +17,39 @@ export class TaskComponent implements OnInit {
   dates = []
   selectedTag = 'General';
   selectedPriority = 'Low';
-  selectedDate;
-  bsInlineValue = new Date();
-  minDate: Date;
+  selectedDate: Date = new Date();
+  bsInlineValue: Date = new Date();
+  minDate: Date = new Date();
+  btnName: Date = new Date();
+  defaultStatus = "In Progress";
   bsConfig: Partial<BsDatepickerConfig>;
+  util = Util;
 
-  constructor(public bsModalRef: BsModalRef) {
-    this.minDate = new Date();
-    this.selectedDate = new Date();
-    const dt = new Date();
-    dt.setDate(this.bsInlineValue.getDate() + 1);
-    this.dates.push({label: 'Today', value: this.bsInlineValue}, {label: 'Tomorrow', value: dt});
+  constructor(public bsModalRef: BsModalRef, private todoService: TodoService) {
+    this.init();
   }
 
   ngOnInit(): void {
     this.bsConfig = Object.assign({}, {containerClass: 'theme-red'});
   }
 
+  saveNewTask = (param?: any): void => {
+    if (this.taskName.length >= 2) {
+      const task: TodoRequest = {
+        name: this.taskName,
+        priority: this.selectedPriority,
+        status: this.defaultStatus,
+        tag: this.selectedTag,
+        duedate: this.selectedDate
+      }
+      this.todoService.saveTodo(task).subscribe((ele) => {
+        console.log(ele);
+        this.bsModalRef.hide();
+      }, error => {
+        console.log(error);
+      });
+    }
+  }
 
   onTagSelected = (tag: string): void => {
     this.selectedTag = tag;
@@ -40,25 +59,20 @@ export class TaskComponent implements OnInit {
     this.selectedPriority = priority;
   }
 
+  onDateSelected = (dt: Date): void => {
+    this.selectedDate = dt;
+    this.btnName = this.selectedDate;
+  }
+
   onValueChange(value: Date): void {
-    console.log(value);
+    this.selectedDate = value;
+    this.bsInlineValue = this.selectedDate;
   }
 
-  getPriorityClass = val => {
-    return {
-      'flag-high': val === 'High',
-      'flag-medium': val === 'Medium',
-      'flag-low': val === 'Low'
-    }
-  }
-
-  getTagClass = val => {
-    return {
-      'tag-general': val === 'General',
-      'tag-home': val === 'Home',
-      'tag-office': val === 'Office',
-      'tag-personal': val === 'Personal'
-    }
+  private init = (param?: any): void => {
+    const dt = new Date();
+    dt.setDate(this.minDate.getDate() + 1);
+    this.dates.push({label: 'Today', value: this.minDate}, {label: 'Tomorrow', value: dt});
   }
 
 
