@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css");
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css");
 
 :root {
   --body-bg: #1f1f1f;
@@ -33,6 +34,7 @@ body {
 
 .card {
   background-color: var(--bg-dark);
+  color: #949ba2;
 }
 
 .badge {
@@ -52,6 +54,104 @@ body {
   background-color: var(--clr-primary) !important;
 }
 
+.flag-completed {
+  color: var(--clr-green)
+}
+
+.flag-high {
+  color: var(--tomato);
+}
+
+.flag-low {
+  color: var(--clr-default);
+}
+
+.flag-medium {
+  color: var(--clr-primary);
+}
+
+.tag-general {
+  color: var(--clr-default)
+}
+
+.tag-home {
+  color: var(--clr-green);
+}
+
+.tag-office {
+  color: var(--clr-primary);
+}
+
+.tag-personal {
+  color: var(--tomato);
+}
+
+label {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.help-block {
+  color: #6d757d;
+  font-size: 13px;
+}
+
+.required {
+  color: #EF3D4F;
+}
+
+.container-center {
+  max-width: 400px;
+  margin: 3% auto 0;
+  padding: 20px;
+}
+
+.container-center.lg {
+  max-width: 800px;
+}
+
+.view-header {
+  margin: 20px 0;
+  min-height: 50px;
+  padding: 0 15px;
+}
+
+.header-icon {
+  font-size: 60px;
+  color: var(--tomato);
+  width: 68px;
+  float: left;
+  margin-top: -8px;
+  line-height: 0;
+}
+
+.header-title {
+  margin-left: 68px;
+}
+
+/* Bootstrap Input */
+.form-control {
+  color: #949ba2;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
+  background-color: var(--txt-fill-bg);
+}
+
+.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #949ba2;
+  background-color: var(--txt-fill-bg);
+}
+
+
+/* Bootstrap Buttons */
 .btn {
   min-width: 100px !important;
 }
@@ -180,8 +280,9 @@ body {
   border-color: #616779;
 }
 
+/* Bootstrap Table */
 .table {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .table-dark {
@@ -205,6 +306,72 @@ body {
   user-select: none;
 }
 
+/* ngx bootstrap modal */
+.modal-content {
+  background-color: #282828;
+  border: 1px solid #171717;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.modal-content .modal-body {
+  padding: 40px;
+}
+
+.modal-backdrop.in {
+  filter: alpha(opacity=10);
+  opacity: 0.1;
+}
+
+/* ngx bootstrap popover */
+.popover {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--body-cl);
+  background-color: #282828;
+  border: 1px solid #171717;
+  max-width: 350px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.bs-popover-top .arrow::after,
+.bs-popover-auto[x-placement^="top"] .arrow::after {
+  border-top-color: #282828 !important;
+}
+
+.bs-popover-auto[x-placement^=bottom] > .arrow::after, .bs-popover-bottom > .arrow::after {
+  top: 1px;
+  border-width: 0 .5rem .5rem .5rem;
+  border-top-color: #282828 !important;
+}
+
+.bs-popover-auto[x-placement^=bottom] > .arrow::after, .bs-popover-bottom > .arrow::after {
+  top: 1px;
+  border-width: 0 .5rem .5rem .5rem;
+  border-bottom-color: #282828 !important;
+}
+
+/* ngx bootstrap calendar */
+.bs-datepicker {
+  background: transparent;
+  box-shadow: none;
+}
+
+.bs-datepicker-body {
+  padding: 0;
+  border: 1px solid transparent;
+}
+
+.bs-datepicker-body table td span.is-other-month, .bs-datepicker-body table td.is-other-month span {
+  color: rgba(255, 255, 255, 0.26);
+}
+
+.bs-datepicker-body table td.is-highlighted:not(.disabled):not(.selected) span, .bs-datepicker-body table td span.is-highlighted:not(.disabled):not(.selected) {
+  background-color: var(--panel-fill-bg);
+  transition: 0s;
+}
+
+/* Scrollbar Customize */
 ::-webkit-scrollbar {
   height: 30px;
   overflow: visible;
@@ -223,8 +390,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #414550;
   background-clip: padding-box;
-  border: solid transparent;
-  border-width: 5px;
+  border: 5px solid transparent;
   min-height: 50%;
   padding: 0;
   -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
@@ -235,169 +401,6 @@ body {
 
 ::-webkit-scrollbar-track {
   background-clip: padding-box;
-  border: solid transparent;
-  border-width: 1px;
+  border: 1px solid transparent;
   width: 10px
-}
-
-
-/* start signup and signin */
-.login-section .card {
-  color: #949ba2;
-}
-
-/*.login-section .panel.panel-filled {*/
-/*  background-color: rgba(68, 70, 79, 0.5);*/
-/*}*/
-
-/*.login-section .panel .panel-body {*/
-/*  padding: 5px 15px 15px 15px;*/
-/*}*/
-
-/*.login-section .panel.panel-filled .panel-body {*/
-/*  padding-top: 10px;*/
-/*}*/
-
-/*.login-section .panel .panel-footer {*/
-/*  background-color: transparent;*/
-/*  border: none;*/
-/*}*/
-
-/*.login-section .panel > .panel-heading {*/
-/*  color: #ffffff;*/
-/*}*/
-
-.login-section label {
-  color: #ffffff;
-  font-weight: 500;
-}
-
-.login-section .help-block {
-  color: #6d757d;
-  font-size: 13px;
-}
-
-.form-control {
-  color: #949ba2;
-  font-size: 14px;
-  border: none;
-  border-radius: 4px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-transition: none;
-  -o-transition: none;
-  transition: none;
-  background-color: var(--txt-fill-bg);
-}
-
-.form-control:focus {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  color: #949ba2;
-  background-color: var(--txt-fill-bg);
-}
-
-.required{
-  color: #EF3D4F;
-}
-
-
-/*.login-section .btn-space {*/
-/*  margin-right: 5px;*/
-/*}*/
-
-/*.login-section .btn-accent {*/
-/*  color: #949ba2;*/
-/*  background-color: transparent;*/
-/*  border-color: #f6a821;*/
-/*}*/
-
-/*.login-section .btn-accent:focus, .login-section .btn-accent.focus {*/
-/*  color: #ffffff;*/
-/*  background-color: rgba(246, 168, 33, 0.1);*/
-/*  border-color: #f6a821;*/
-/*  outline: 0;*/
-/*  box-shadow: none;*/
-/*}*/
-
-/*.login-section .btn-accent:hover {*/
-/*  color: #ffffff;*/
-/*  background-color: rgba(246, 168, 33, 0.1);*/
-/*  border-color: #f6a821;*/
-/*}*/
-
-/*.login-section .btn-accent:active,*/
-/*.login-section .btn-accent.active,*/
-/*.login-section .open > .login-section .dropdown-toggle.btn-accent {*/
-/*  color: #ffffff;*/
-/*  background-color: rgba(246, 168, 33, 0.1);*/
-/*  border-color: #f6a821;*/
-/*}*/
-
-.login-section.container-center {
-  max-width: 400px;
-  margin: 3% auto 0;
-  padding: 20px;
-}
-
-.login-section.container-center.lg {
-  max-width: 800px;
-}
-
-.login-section .view-header {
-  margin: 20px 0;
-  min-height: 50px;
-  padding: 0 15px;
-}
-
-.login-section .view-header .header-icon {
-  font-size: 60px;
-  color: var(--tomato);
-  width: 68px;
-  float: left;
-  margin-top: -8px;
-  line-height: 0;
-}
-
-.login-section .view-header .header-title {
-  margin-left: 68px;
-}
-
-/* end signup and signin */
-.modal-content {
-  background-color: #282828;
-  border: 1px solid #171717;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
-.modal-content .modal-body {
-  padding: 40px;
-}
-.modal-backdrop.in {
-  filter: alpha(opacity=10);
-  opacity: 0.1;
-}
-
-.popover{
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--body-cl);
-  background-color: #282828;
-  border: 1px solid #171717;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
-.bs-popover-top .arrow::after,
-.bs-popover-auto[x-placement^="top"] .arrow::after {
-  border-top-color: #282828 !important;
-}
-.bs-popover-auto[x-placement^=bottom]>.arrow::after, .bs-popover-bottom>.arrow::after {
-  top: 1px;
-  border-width: 0 .5rem .5rem .5rem;
-  border-top-color: #282828 !important;
-}
-
-.bs-popover-auto[x-placement^=bottom]>.arrow::after, .bs-popover-bottom>.arrow::after {
-  top: 1px;
-  border-width: 0 .5rem .5rem .5rem;
-  border-bottom-color: #282828 !important;
 }

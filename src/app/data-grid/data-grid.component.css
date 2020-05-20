@@ -1,15 +1,3 @@
-.flag-high {
-  color: var(--tomato);
-}
-.flag-completed {
-  color: var(--clr-green)
-}
-.flag-low{
-  color: var(--clr-default);
-}
-.flag-medium{
-  color: var(--clr-primary);
-}
 .action-icons{
   font-size: 18px;
 }

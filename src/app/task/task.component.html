@@ -1,8 +1,9 @@
 <div class="modal-body">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" [(ngModel)]="taskName" placeholder="e.g. Hackerearth coding challenge "/>
+    <input [(ngModel)]="taskName" class="form-control" placeholder="e.g. Hackerearth coding challenge " type="text"/>
     <div class="input-group-append">
-      <button class="btn btn-danger btn-sm">
+      <button #pop3="bs-popover" [outsideClick]="true" [popover]="calendarTemp" class="btn btn-danger btn-sm"
+              placement="bottom">
         Choose Date
       </button>
     </div>
@@ -13,18 +14,48 @@
         <button class="btn btn-danger btn-rounded btn-sm">Add Task</button>
       </li>
       <li class="list-inline-item">
-        <a href="javascript:void(0)" (click)="bsModalRef.hide()" class="btn btn-default btn-rounded btn-sm">Cancel</a>
+        <a (click)="bsModalRef.hide()" class="btn btn-default btn-rounded btn-sm" href="javascript:void(0)">Cancel</a>
       </li>
       <li class="list-inline-item pull-right">
-        <button class="btn btn-sm btn-span" #pop1="bs-popover" [outsideClick]="true" [popover]="tag" placement="bottom"><span class="fa fa-tag"  aria-hidden="true"></span></button>
-        <button class="btn btn-sm btn-span"><span class="fa fa-flag" aria-hidden="true"></span></button>
+        <button #pop1="bs-popover" [outsideClick]="true" [popover]="tagTemp" class="btn btn-sm btn-span"
+                placement="bottom">
+          <span aria-hidden="true" class="fa fa-tag"></span></button>
+        <button #pop2="bs-popover" [outsideClick]="true" [popover]="priorityTemp" class="btn btn-sm btn-span"
+                placement="bottom"><span
+          aria-hidden="true" class="fa fa-flag"></span></button>
       </li>
     </ul>
   </div>
 </div>
 
-<ng-template #tag>
-    <ul class="tag-dropdown">
-      <li (click)="onTagSelected(tag);pop1.hide()" [ngClass]="selectedTag==tag?'tag-active':''" *ngFor="let tag of tags" class="tag-dropdown-item" [value]="tag"><span class="fa fa-tag pr-2" aria-hidden="true"></span>{{tag}}</li>
-    </ul>
+<!--Tag Window Template-->
+<ng-template #tagTemp>
+  <ul class="tag-dropdown">
+    <li (click)="onTagSelected(tag);pop1.hide()" *ngFor="let tag of tags" [ngClass]="selectedTag==tag?'tag-active':''"
+        [value]="tag" class="tag-dropdown-item"><span [ngClass]="getTagClass(tag)" aria-hidden="true"
+                                                      class="fa fa-tag pr-2"></span>{{tag}}</li>
+  </ul>
+</ng-template>
+
+<!--Priority Window Template -->
+<ng-template #priorityTemp>
+  <ul class="priority-dropdown">
+    <li (click)="onPrioritySelected(priority);pop2.hide()" *ngFor="let priority of priorities"
+        [ngClass]="selectedPriority==priority?'priority-active':''" [value]="priority" class="priority-dropdown-item">
+      <span [ngClass]="getPriorityClass(priority)" aria-hidden="true" class="fa fa-flag pr-1"></span>{{priority}}
+    </li>
+  </ul>
+</ng-template>
+
+<!--Calendar Window Template-->
+<ng-template #calendarTemp>
+  <ul class="calendar-dropdown" style="border-bottom: 1px solid #6d757d">
+    <li *ngFor="let dt of dates" [ngClass]="selectedDate==dt?'date-active':''" [value]="dt.value"
+        class="calendar-dropdown-item">
+      <span aria-hidden="true" class="fa fa-calendar-check-o pr-2"></span>{{dt.label}}
+      <span class="pull-right">{{dt.value | date:'EEE dd'}}</span>
+    </li>
+  </ul>
+  <bs-datepicker-inline (bsValueChange)="onValueChange($event);" [bsConfig]="bsConfig" [bsValue]="bsInlineValue"
+                        [minDate]="minDate"></bs-datepicker-inline>
 </ng-template>
