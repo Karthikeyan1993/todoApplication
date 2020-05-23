@@ -35,7 +35,10 @@ export class SignInComponent implements OnInit {
       }, (error => {
         this.errors = [];
         this.errors.push(error.statusText);
-        this.message = error.statusText;
+        if(error.status==400){
+        this.message = "invalid username or password";
+        }
+        
       }));
     } else {
       this.collectErrors(this.loginFrm);

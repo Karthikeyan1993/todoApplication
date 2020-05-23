@@ -19,8 +19,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import {HttpInterceptorService} from "./http-interceptor.service";
 import {SharedModule} from "./shared/shared.module";
 import {PopoverModule} from "ngx-bootstrap/popover";
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { Ng9LoadingSpinnerComponent } from './ng9-loading-spinner/ng9-loading-spinner.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { Ng9LoadingSpinnerComponent } from './ng9-loading-spinner/ng9-loading-sp
     DataFilterPipe,
     SignInComponent,
     SignUpComponent,
-    Ng9LoadingSpinnerComponent
+    Ng9LoadingSpinnerComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +49,8 @@ import { Ng9LoadingSpinnerComponent } from './ng9-loading-spinner/ng9-loading-sp
     ReactiveFormsModule,
     SharedModule,
     PopoverModule.forRoot(),
-    BsDatepickerModule.forRoot()
-
+    BsDatepickerModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [ScrollDispatcher,{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]

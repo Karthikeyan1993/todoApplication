@@ -57,10 +57,17 @@ export class TodoComponent implements OnInit {
       });
   }
 
+  updateTodo = todo =>{
+    this.getAllTodos();
+  }
+
   openTaskComp=(param?:any):void=>{
     this.bsTaskModalRef = this.bsModelService.show(TaskComponent,{
       class: 'modal-lg'
     })
+    this.bsTaskModalRef.content.saveEmitter.subscribe(data => {
+      this.getAllTodos();
+    });
 }
 
   filterData = status => this.status = status;

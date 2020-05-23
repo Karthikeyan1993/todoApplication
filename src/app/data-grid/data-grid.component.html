@@ -20,8 +20,9 @@
       <td>{{todo.duedate}}</td>
       <td *ngIf="row!=i"></td>
       <td *ngIf="row==i">
-        <span class="fa fa-pencil-square-o action-icons pr-2" aria-hidden="true"></span>
-        <span (click)="deleteTodo(todo.id)" class="fa fa-trash-o action-icons" aria-hidden="true"></span>
+        <span (click)="updateUpto(todo)" *ngIf="todo.status=='In Progress'" tooltip="Mark As Complete" class="fa fa-check-square-o action-icons pr-2" aria-hidden="true"></span>
+        <span tooltip="Edit" *ngIf="todo.status=='In Progress'" (click)="editTodo(todo);" class="fa fa-pencil-square-o action-icons pr-2" aria-hidden="true"></span>
+        <span tooltip="Delete" (click)="deleteTodo(todo.id)" class="fa fa-trash-o action-icons" aria-hidden="true"></span>
       </td>
     </tr>
     <tr *ngIf="todoList.length==0">

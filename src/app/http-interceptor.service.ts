@@ -37,8 +37,9 @@ export class HttpInterceptorService {
       }
       return event;
     }), catchError((error: HttpErrorResponse) => {
-      return throwError(error);
+      console.log("its error")
       this.loadingSpinnerService.hide();
+      return throwError(error);
     }));
   }
 }

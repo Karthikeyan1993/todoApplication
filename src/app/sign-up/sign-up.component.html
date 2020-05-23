@@ -10,22 +10,22 @@
   </div>
   <div class="card">
     <div class="card-body">
-      <form (ngSubmit)="submit($event)" [formGroup]="signUp" autocomplete="off" autocomplete="off">
+      <form (ngSubmit)="submit($event)" [formGroup]="signUp" autocomplete="off">
         <div class="row">
           <div class="form-group col-lg-6">
             <label for="username">Username<span class="pl-1 required">*</span></label>
             <input (blur)="checkUserNameAlreadyAvailable('username')" class="form-control" placeholder="xxxxxxxx" formControlName="username" id="username" name="username" type="text">
-            <span class="help-block small">Your unique username to app</span>
+            <span class="help-block small">Your unique username to app (minimum 8 characters)</span>
           </div>
           <div class="form-group col-lg-6">
             <label for="email">Email<span class="pl-1 required">*</span></label>
             <input (blur)="checkEmailAlreadyAvailable('email')" [email] class="form-control" placeholder="example@gmail.com" formControlName="email" id="email" name="email">
-            <span class="help-block small">Your address email to contact</span>
+            <span class="help-block small">Your valid email to contact</span>
           </div>
           <div class="form-group col-lg-6">
             <label for="password">Password<span class="pl-1 required">*</span></label>
             <input class="form-control" placeholder="******" formControlName="password" id="password" name="password" type="password">
-            <span class="help-block small">Your hard to guess password</span>
+            <span class="help-block small">Your hard to guess password (minimum 8 characters)</span>
           </div>
           <div class="form-group col-lg-6">
             <label for="repeatpassword">Repeat Password<span class="pl-1 required">*</span></label>
@@ -35,12 +35,14 @@
           </div>
         </div>
         <div>
-          <button class="btn btn-danger btn-rounded btn-sm">Register</button>
+          <button [disabled]="signUp.invalid" class="btn btn-danger btn-rounded btn-sm">Register</button>
         </div>
       </form>
     </div>
   </div>
-  <div *ngIf="!signUp.valid && message || signUp.valid && message" class="message-block">
-    <p [innerHtml]="message"></p>
+  <div *ngIf="errMessage!=''" class="card" style="background-color: rgba(219, 82, 75, 0.1);">
+    <div class="card-body">
+      <span [innerHTML]="errMessage" style="color: #EF3D4F"></span>
+    </div>
   </div>
 </div>

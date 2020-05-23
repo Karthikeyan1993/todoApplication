@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, EventEmitter,Output} from '@angular/core';
 import {BsModalRef} from "ngx-bootstrap/modal";
 import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
 import {TodoService} from "../todo.service";
@@ -24,7 +24,7 @@ export class TaskComponent implements OnInit {
   defaultStatus = "In Progress";
   bsConfig: Partial<BsDatepickerConfig>;
   util = Util;
-
+  @Output()saveEmitter: EventEmitter<any> = new EventEmitter();
   constructor(public bsModalRef: BsModalRef, private todoService: TodoService) {
     this.init();
   }
@@ -42,8 +42,8 @@ export class TaskComponent implements OnInit {
         tag: this.selectedTag,
         duedate: this.selectedDate
       }
-      this.todoService.saveTodo(task).subscribe((ele) => {
-        console.log(ele);
+      this.todoService.saveTodo(task).subscribe((response) => {
+        this.saveEmitter.emit(response);
         this.bsModalRef.hide();
       }, error => {
         console.log(error);
@@ -74,6 +74,5 @@ export class TaskComponent implements OnInit {
     dt.setDate(this.minDate.getDate() + 1);
     this.dates.push({label: 'Today', value: this.minDate}, {label: 'Tomorrow', value: dt});
   }
-
 
 }
