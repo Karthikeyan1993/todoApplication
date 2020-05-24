@@ -24,3 +24,8 @@
 .tag-active, .priority-active, .data-active {
   background-color: var(--panel-fill-bg);
 }
+
+.readonly-txt{
+  cursor:pointer;
+  user-select: none;
+}

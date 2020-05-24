@@ -21,9 +21,9 @@ export class DataSortPipe implements PipeTransform {
         } else if (typeof val1 === 'number') {
           return val1 - val2 > 0 ? direction * -1 : direction * 1;
         }
-      })]
+      })];
     } else {
-      return []
+      return [];
     }
   }
 

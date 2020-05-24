@@ -1,13 +1,16 @@
-.fa-plus-circle,.fa-refresh{
+.fa-plus-circle,
+.fa-refresh {
   font-size: 24px;
   color: var(--tomato);
   cursor: pointer;
   user-select: none;
 }
 
-.btn-group-sm>.btn, .btn-sm {
+.btn-group-sm>.btn,
+.btn-sm {
   padding: .10rem .1rem;
 }
+
 .badge {
   position: relative;
   top: -12px;

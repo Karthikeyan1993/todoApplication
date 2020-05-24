@@ -369,7 +369,7 @@ fieldset[disabled] .form-control {
 
 /* ngx bootstrap calendar */
 .bs-datepicker {
-  background: transparent;
+  background: var(--bg-dark);
   box-shadow: none;
 }
 

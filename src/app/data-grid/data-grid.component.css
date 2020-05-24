@@ -1,9 +1,11 @@
-.action-icons{
+.action-icons {
   font-size: 18px;
 }
-.sort-icon{
+
+.sort-icon {
   color: var(--tomato);
 }
-.fa-frown-o{
-  font-size:16px;
+
+.fa-frown-o {
+  font-size: 16px;
 }

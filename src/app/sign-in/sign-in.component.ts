@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators, Validator} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {JwtAuthenticationResponse, SignInRequest} from '../shared/model';
 import {Router} from '@angular/router';
-import {AppSettings} from "../shared/AppSettings";
+import { AppSettings } from "../shared/AppSettings";
 
 @Component({
   selector: 'app-sign-in',
@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit {
         if(error.status==400){
         this.message = "invalid username or password";
         }
-        
+
       }));
     } else {
       this.collectErrors(this.loginFrm);

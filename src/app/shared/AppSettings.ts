@@ -1,7 +1,10 @@
 export class AppSettings {
-  public static HEADER_STRING: string = "Authorization";
-  public static TOKEN_PREFIX: string = "Bearer ";
-  public static LOCAL_AUTH_TOKEN: string = "todoAuthToken"
-  public static LOCAL_AUTH_USER: string = "todoAuthUser"
-  public static APP_BASE_URL: string = "http://localhost:5200/"
+  public static HEADER_STRING = 'Authorization';
+  public static TOKEN_PREFIX = 'Bearer ';
+  public static LOCAL_AUTH_TOKEN = 'todoAuthToken';
+  public static LOCAL_AUTH_USER = 'todoAuthUser';
+  public static APP_BASE_URL = 'http://localhost:5200/';
+  public static STATUS_IN_PROGRESS = 'In Progress';
+  public static STATUS_COMPLETED = 'Completed';
+  public static STATUS_OVERDUE = 'Overdue';
 }
