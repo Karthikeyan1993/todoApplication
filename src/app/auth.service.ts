@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class AuthService {
   private readonly SIGN_IN_URL = 'api/v1/auth/signin';
-  private readonly SIGN_UP_URL = 'api/v1/auth/signin';
+  private readonly SIGN_UP_URL = 'api/v1/auth/signup';
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   signUp = (param: SignUpRequest): Observable<any> => {
-    return this.http.post<Observable<any>>(`${this.SIGN_UP_URL}`, param)
+    return this.http.post<Observable<any>>(AppSettings.APP_BASE_URL + `${this.SIGN_UP_URL}`, param)
       .pipe(map((res) => res),
         catchError((error) => {
           console.log('Error while SignUpRequest', error);

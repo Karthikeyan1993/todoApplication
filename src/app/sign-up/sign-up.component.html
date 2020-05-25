@@ -1,4 +1,4 @@
-<div class="login-section container-center lg">
+<div class="login-section container-center">
   <div class="view-header">
     <div class="header-icon">
       <span aria-hidden="true" class="fa fa-user-plus"></span>
@@ -11,31 +11,24 @@
   <div class="card">
     <div class="card-body">
       <form (ngSubmit)="submit($event)" [formGroup]="signUp" autocomplete="off">
-        <div class="row">
-          <div class="form-group col-lg-6">
+          <div class="form-group">
             <label for="username">Username<span class="pl-1 required">*</span></label>
             <input (blur)="checkUserNameAlreadyAvailable('username')" class="form-control" placeholder="xxxxxxxx" formControlName="username" id="username" name="username" type="text">
-            <span class="help-block small">Your unique username to app (minimum 8 characters)</span>
+            <span class="help-block small">Your unique username to app (minimum 6 characters)</span>
           </div>
-          <div class="form-group col-lg-6">
+          <div class="form-group">
             <label for="email">Email<span class="pl-1 required">*</span></label>
             <input (blur)="checkEmailAlreadyAvailable('email')" [email] class="form-control" placeholder="example@gmail.com" formControlName="email" id="email" name="email">
             <span class="help-block small">Your valid email to contact</span>
           </div>
-          <div class="form-group col-lg-6">
+          <div class="form-group">
             <label for="password">Password<span class="pl-1 required">*</span></label>
             <input class="form-control" placeholder="******" formControlName="password" id="password" name="password" type="password">
-            <span class="help-block small">Your hard to guess password (minimum 8 characters)</span>
+            <span class="help-block small">Your hard to guess password (minimum 6 characters)</span>
           </div>
-          <div class="form-group col-lg-6">
-            <label for="repeatpassword">Repeat Password<span class="pl-1 required">*</span></label>
-            <input class="form-control" placeholder="******" formControlName="repeatpassword" id="repeatpassword" name="repeatpassword"
-                   type="password">
-            <span class="help-block small">Please repeat your password</span>
-          </div>
-        </div>
         <div>
-          <button [disabled]="signUp.invalid" class="btn btn-danger btn-rounded btn-sm">Register</button>
+          <button [disabled]="signUp.invalid" class="btn btn-danger btn-rounded btn-sm mr-2">Register<span aria-hidden="true" class="fa fa-user-plus pl-1"></span></button>
+          <a routerLink="/signin" class="btn btn-default btn-sm btn-rounded">Login<span aria-hidden="true" class="fa fa-sign-in pl-1"></span></a>
         </div>
       </form>
     </div>
@@ -46,3 +39,11 @@
     </div>
   </div>
 </div>
+
+<ng-template #template>
+  <div class="modal-body text-center" style="cursor: pointer;">
+    <h5><span class="fa fa-check-circle" aria-hidden="true" style="font-size: 48px;color: springgreen;"></span></h5>
+    <h6>Your MyTodo account was succesfully created.</h6>
+    <p>We have send account activation link to your registered mail <span style="color: #007bff !important;">{{email}}</span> </p>
+  </div>
+</ng-template>
