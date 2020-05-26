@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-reset-password',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  constructor() { }
+  reset: FormGroup
+
+  constructor(private fb: FormBuilder) {
+    this.reset = this.fb.group({
+      usernameEmail: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit = () => {
+    if (this.reset.valid) {
+      console.log(this.reset.value);
+    }
   }
 
 }
