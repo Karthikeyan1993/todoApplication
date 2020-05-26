@@ -2,15 +2,12 @@ import {
   Component,
   OnInit,
   ViewChild,
-  TemplateRef,
-  QueryList,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, Validator } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
-import { SignUpRequest } from '../shared/model';
-import { AuthService } from '../auth.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../user.service';
+import {SignUpRequest} from '../shared/model';
+import {AuthService} from '../auth.service';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-sign-up',
@@ -33,7 +30,9 @@ export class SignUpComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private authService: AuthService
-  ) {}
+  ) {
+  }
+
   ngOnInit() {
     this.signUp = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(6)]],
@@ -42,7 +41,7 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  submit = (event): void => {
+  submit = (): void => {
     if (!this.signUp.invalid) {
       if (!this.isEmailAvailable && !this.isUseNameAvailable) {
         const request: SignUpRequest = {
@@ -63,9 +62,10 @@ export class SignUpComponent implements OnInit {
               initialState
             );
             this.signUp.reset();
+            console.log("User account created successfully", res);
           },
           (error) => {
-            console.log('Error while creating new user profile');
+            console.log('Error while creating new user profile', error);
           }
         );
       }
@@ -87,7 +87,7 @@ export class SignUpComponent implements OnInit {
           },
           (error) => {
             this.isUseNameAvailable = false;
-            console.log('Error while checking username');
+            console.log('Error while checking username', error);
           }
         );
     }
@@ -108,7 +108,7 @@ export class SignUpComponent implements OnInit {
           },
           (error) => {
             this.isEmailAvailable = false;
-            console.log('Error while checking email');
+            console.log('Error while checking email', error);
           }
         );
     }

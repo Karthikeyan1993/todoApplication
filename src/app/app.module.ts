@@ -23,6 +23,9 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { Ng9LoadingSpinnerComponent } from './ng9-loading-spinner/ng9-loading-spinner.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
+import { ActivateComponent } from './activate/activate.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
     SignInComponent,
     SignUpComponent,
     Ng9LoadingSpinnerComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    ActivateComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
