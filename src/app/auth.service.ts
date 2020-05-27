@@ -12,7 +12,8 @@ import {Router} from '@angular/router';
 export class AuthService {
   private readonly SIGN_IN_URL = 'api/v1/auth/signin';
   private readonly SIGN_UP_URL = 'api/v1/auth/signup';
-  private readonly PASSWORD_RESET_LINK = 'api/v1/auth/getResetPasswordLink/';
+  private readonly PASSWORD_RESET_LINK_URL = 'api/v1/auth/getResetPasswordLink/';
+  private readonly ACTIVATE_USER_ACCOUNT_URL = 'api/v1/auth/activateUserAccount/';
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -36,10 +37,19 @@ export class AuthService {
   }
 
   getResetPasswordLink = (emailOrUsername: string) => {
-    return this.http.get(AppSettings.APP_BASE_URL + `${this.PASSWORD_RESET_LINK}` + emailOrUsername)
+    return this.http.get(AppSettings.APP_BASE_URL + `${this.PASSWORD_RESET_LINK_URL}` + emailOrUsername)
       .pipe(map((res) => res),
         catchError((error) => {
           console.log('Error while getPasswordResetLink', error);
+          return throwError(error);
+        }));
+  }
+
+  activateUserAccount = (token: string) => {
+    return this.http.get(AppSettings.APP_BASE_URL + `${this.ACTIVATE_USER_ACCOUNT_URL}` + token)
+      .pipe(map((res) => res),
+        catchError((error) => {
+          console.log('Error while activateUserAccount', error);
           return throwError(error);
         }));
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-activate',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./activate.component.css']
 })
 export class ActivateComponent implements OnInit {
-
-  constructor() { }
+  isSuccess: boolean;
+  token;
+  constructor(private router: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.router.queryParamMap.subscribe(ele => {
+      this.token = ele.get('token');
+      if (this.token) {
+       console.log('token is available');
+       this.authService.activateUserAccount(this.token)
+         .subscribe((response) => {
+           this.isSuccess = true;
+           console.log(response);
+         }, error => {
+           this.isSuccess = false;
+           console.log(error);
+         });
+      }
+    });
   }
 
 }
