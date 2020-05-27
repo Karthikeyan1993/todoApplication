@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class AuthService {
   private readonly SIGN_IN_URL = 'api/v1/auth/signin';
   private readonly SIGN_UP_URL = 'api/v1/auth/signup';
+  private readonly PASSWORD_RESET_LINK = 'api/v1/auth/getResetPasswordLink/';
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -34,7 +35,16 @@ export class AuthService {
         }));
   }
 
-  signOut = (param?: any): void => {
+  getResetPasswordLink = (emailOrUsername: string) => {
+    return this.http.get(AppSettings.APP_BASE_URL + `${this.PASSWORD_RESET_LINK}` + emailOrUsername)
+      .pipe(map((res) => res),
+        catchError((error) => {
+          console.log('Error while getPasswordResetLink', error);
+          return throwError(error);
+        }));
+  }
+
+  signOut = (): void => {
     if (localStorage.getItem(AppSettings.LOCAL_AUTH_TOKEN) !== null) {
       localStorage.removeItem(AppSettings.LOCAL_AUTH_TOKEN);
       this.isLoggedIn.next(false);
