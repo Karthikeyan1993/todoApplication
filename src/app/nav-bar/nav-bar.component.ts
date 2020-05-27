@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from "../authentication.service";
-import {AuthService} from "../auth.service";
-import {UserService} from "../user.service";
-import {UserDetailResponse} from "../shared/model";
+import {AuthenticationService} from '../authentication.service';
+import {AuthService} from '../auth.service';
+import {UserService} from '../user.service';
+import {UserDetailResponse} from '../shared/model';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +10,7 @@ import {UserDetailResponse} from "../shared/model";
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  username: string = '';
+  username: string;
   isLoggedIn: boolean;
 
   constructor(private auth: AuthService, private userService: UserService, private authentication: AuthenticationService) {

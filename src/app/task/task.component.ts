@@ -34,7 +34,7 @@ export class TaskComponent implements OnInit {
     this.bsConfig = Object.assign({}, { containerClass: 'theme-red' });
   }
 
-  saveNewTask = (param?: any): void => {
+  saveNewTask = (): void => {
     if (this.taskName.length >= 2) {
       const task: TodoRequest = {
         name: this.taskName,
@@ -73,7 +73,7 @@ export class TaskComponent implements OnInit {
     this.bsInlineValue = this.selectedDate;
   }
 
-  private init = (param?: any): void => {
+  private init = (): void => {
     const dt = new Date();
     dt.setDate(this.minDate.getDate() + 1);
     this.dates.push(

@@ -10,7 +10,7 @@
   <div class="actions">
     <ul class="list-inline">
       <li class="list-inline-item">
-        <button (click)="saveNewTask($event)" [disabled]="taskName.length<2" class="btn btn-danger btn-rounded btn-sm">Add Task</button>
+        <button (click)="saveNewTask()" [disabled]="taskName.length<2" class="btn btn-danger btn-rounded btn-sm">Add Task</button>
       </li>
       <li class="list-inline-item">
         <a (click)="bsModalRef.hide()" class="btn btn-default btn-rounded btn-sm" href="javascript:void(0)">Cancel</a>

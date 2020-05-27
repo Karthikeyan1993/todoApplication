@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
-import {LoadingSpinnerService} from "../loading-spinner.service";
+import {Observable} from 'rxjs';
+import {LoadingSpinnerService} from '../loading-spinner.service';
 
 @Component({
   selector: 'app-ng9-loading-spinner',
@@ -9,13 +9,13 @@ import {LoadingSpinnerService} from "../loading-spinner.service";
 })
 export class Ng9LoadingSpinnerComponent implements OnInit {
   flag$: Observable<boolean>;
-  constructor(private loadingSpinnerService:LoadingSpinnerService) { }
+  constructor(private loadingSpinnerService: LoadingSpinnerService) { }
 
   ngOnInit(): void {
     this.getStatus();
   }
 
-  private getStatus=(param?:any):void=>{
+  private getStatus = (param?: any): void => {
     this.flag$ = this.loadingSpinnerService.getStatus();
   }
 

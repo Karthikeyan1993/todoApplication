@@ -62,7 +62,7 @@ export class SignUpComponent implements OnInit {
               initialState
             );
             this.signUp.reset();
-            console.log("User account created successfully", res);
+            console.log('User account created successfully', res);
           },
           (error) => {
             console.log('Error while creating new user profile', error);

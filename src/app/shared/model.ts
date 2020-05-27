@@ -41,6 +41,12 @@ interface UserDetailResponse {
   username: string;
 }
 
+interface ResetPasswordRequest {
+  userNameOrEmail: string;
+  password: string;
+  token: string;
+}
+
 export {
   Todo,
   ColumnDef,
@@ -48,5 +54,6 @@ export {
   SignInRequest,
   SignUpRequest,
   JwtAuthenticationResponse,
-  UserDetailResponse
+  UserDetailResponse,
+  ResetPasswordRequest
 };

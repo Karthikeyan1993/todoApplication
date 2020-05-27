@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {map, catchError} from 'rxjs/operators';
-import {SignUpRequest, SignInRequest, JwtAuthenticationResponse} from './shared/model';
-import { AppSettings } from './shared/AppSettings';
+import {SignUpRequest, SignInRequest, JwtAuthenticationResponse, ResetPasswordRequest} from './shared/model';
+import {AppSettings} from './shared/AppSettings';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -14,7 +14,9 @@ export class AuthService {
   private readonly SIGN_UP_URL = 'api/v1/auth/signup';
   private readonly PASSWORD_RESET_LINK_URL = 'api/v1/auth/getResetPasswordLink/';
   private readonly ACTIVATE_USER_ACCOUNT_URL = 'api/v1/auth/activateUserAccount/';
+  private readonly PASSWORD_RESET_URL = 'api/v1/auth/resetPassword';
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient, private router: Router) {
   }
 
@@ -41,6 +43,15 @@ export class AuthService {
       .pipe(map((res) => res),
         catchError((error) => {
           console.log('Error while getPasswordResetLink', error);
+          return throwError(error);
+        }));
+  }
+
+  resetPassword = (param: ResetPasswordRequest) => {
+    return this.http.post(AppSettings.APP_BASE_URL + `${this.PASSWORD_RESET_URL}`, param)
+      .pipe(map((res) => res),
+        catchError((error) => {
+          console.log('Error while resetPassword', error);
           return throwError(error);
         }));
   }
