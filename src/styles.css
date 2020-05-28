@@ -135,6 +135,11 @@ label {
   margin-left: 68px;
 }
 
+.success-icon{
+  font-size: 64px;
+  color: springgreen;
+}
+
 /* Bootstrap Input */
 .form-control {
   color: #949ba2;

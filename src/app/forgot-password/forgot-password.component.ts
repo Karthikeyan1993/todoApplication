@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
@@ -11,6 +12,7 @@ export class ForgotPasswordComponent implements OnInit {
   forgot: FormGroup;
   bsConfirmationModalRef: BsModalRef = null;
   @ViewChild('template') template;
+
   constructor(private fb: FormBuilder, private authService: AuthService, public bsModalService: BsModalService) {
     this.forgot = this.fb.group(({
       usernameEmail: ['', [Validators.required]]
@@ -32,9 +34,10 @@ export class ForgotPasswordComponent implements OnInit {
             initialState
           );
           this.forgot.reset();
-          console.log(ele);
+          console.log('Email or Username validated successfully');
         }, error => {
           console.log(error);
+          console.log('Error while validating username or email');
         });
     }
   }

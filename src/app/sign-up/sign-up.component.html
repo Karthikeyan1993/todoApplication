@@ -30,7 +30,7 @@
           <span class="help-block small">Your hard to guess password (minimum 6 characters)</span>
         </div>
         <div>
-          <button [disabled]="signUp.invalid" class="btn btn-danger btn-rounded btn-sm mr-2">Register<span
+          <button [disabled]="signUp.invalid || (isEmailAvailable || isUseNameAvailable) " class="btn btn-danger btn-rounded btn-sm mr-2">Register<span
             aria-hidden="true" class="fa fa-user-plus pl-1"></span></button>
           <a class="btn btn-default btn-sm btn-rounded" routerLink="/signin">Login<span aria-hidden="true"
                                                                                         class="fa fa-sign-in pl-1"></span></a>

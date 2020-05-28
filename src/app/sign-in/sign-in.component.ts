@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, Validator} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {JwtAuthenticationResponse, SignInRequest} from '../shared/model';
 import {Router} from '@angular/router';
-import { AppSettings } from "../shared/AppSettings";
+import {AppSettings} from '../shared/AppSettings';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +11,7 @@ import { AppSettings } from "../shared/AppSettings";
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  loginFrm: FormGroup
+  loginFrm: FormGroup;
   message;
   errors = [];
 
@@ -26,7 +26,7 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  submit = (event): void => {
+  submit = (): void => {
     if (!this.loginFrm.invalid) {
       const param: SignInRequest = this.loginFrm.value;
       this.auth.signIn(param).subscribe((response: JwtAuthenticationResponse) => {
@@ -35,10 +35,9 @@ export class SignInComponent implements OnInit {
       }, (error => {
         this.errors = [];
         this.errors.push(error.statusText);
-        if(error.status==400){
-        this.message = "invalid username or password";
+        if (error.status === 400) {
+          this.message = 'invalid username or password';
         }
-
       }));
     } else {
       this.collectErrors(this.loginFrm);
@@ -47,22 +46,22 @@ export class SignInComponent implements OnInit {
 
 
   collectErrors = (form?: FormGroup) => {
-    for (let ele in form.controls) {
-      if (form.controls[ele].status == "INVALID") {
+    for (const ele in form.controls) {
+      if (form.controls[ele].status === 'INVALID') {
         if ('required' in form.controls[ele].errors) {
           this.errors.push(ele);
         }
       }
     }
     if (this.errors.length > 0) {
-      this.message = "Please provide all marked <span class='p-1 required'>*</span> information";
+      this.message = 'Please provide all marked <span class=\'p-1 required\'>*</span> information';
     }
   }
 
   private handleToken = (tokenResponse: JwtAuthenticationResponse): void => {
     if (!localStorage.getItem(AppSettings.LOCAL_AUTH_TOKEN)) {
       localStorage.setItem(AppSettings.LOCAL_AUTH_TOKEN, tokenResponse.accessToken);
-      this.router.navigate(['todo']).then(r => console.log("User Token Received Successfully", r));
+      this.router.navigate(['todo']).then(r => console.log('User Token Received Successfully', r));
     }
   }
 }
