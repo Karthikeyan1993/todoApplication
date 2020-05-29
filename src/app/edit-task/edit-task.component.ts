@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Todo} from '../shared/model';
 import {BsModalRef} from 'ngx-bootstrap/modal';
-import {FormBuilder, FormGroup, Validators, Validator} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {Util} from '../shared/Util';
 import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
 import {TodoService} from '../todo.service';
@@ -17,7 +17,6 @@ export class EditTaskComponent implements OnInit {
   task: FormGroup;
   util = Util;
   bsConfig: Partial<BsDatepickerConfig>;
-  bsValue: Date;
   minDate: Date;
   @Output() updateEmitter: EventEmitter<any> = new EventEmitter<any>();
   constructor(private bsModalRef: BsModalRef, private fb: FormBuilder, private todoService: TodoService) {

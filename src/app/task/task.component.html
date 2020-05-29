@@ -2,15 +2,18 @@
   <div class="input-group mb-3">
     <input [(ngModel)]="taskName" class="form-control" placeholder="e.g. Hackerearth coding challenge " type="text"/>
     <div class="input-group-append">
-      <button #pop3="bs-popover" [outsideClick]="true" [popover]="calendarTemp" class="btn btn-danger btn-sm"
-              placement="bottom" [innerHTML]=" selectedDate | date:'EEE dd'">
+      <button #pop3="bs-popover" [innerHTML]=" selectedDate | date:'EEE dd'" [outsideClick]="true"
+              [popover]="calendarTemp"
+              class="btn btn-danger btn-sm" placement="bottom">
       </button>
     </div>
   </div>
   <div class="actions">
     <ul class="list-inline">
       <li class="list-inline-item">
-        <button (click)="saveNewTask()" [disabled]="taskName.length<2" class="btn btn-danger btn-rounded btn-sm">Add Task</button>
+        <button (click)="saveNewTask()" [disabled]="taskName.length<2" class="btn btn-danger btn-rounded btn-sm">Add
+          Task
+        </button>
       </li>
       <li class="list-inline-item">
         <a (click)="bsModalRef.hide()" class="btn btn-default btn-rounded btn-sm" href="javascript:void(0)">Cancel</a>
@@ -18,10 +21,10 @@
       <li class="list-inline-item pull-right">
         <button #pop1="bs-popover" [outsideClick]="true" [popover]="tagTemp" class="btn btn-sm btn-span"
                 placement="bottom">
-          <span aria-hidden="true" [ngClass]="util.getTagClass(selectedTag)" class="fa fa-tag"></span></button>
+          <span [ngClass]="util.getTagClass(selectedTag)" aria-hidden="true" class="fa fa-tag"></span></button>
         <button #pop2="bs-popover" [outsideClick]="true" [popover]="priorityTemp" class="btn btn-sm btn-span"
                 placement="bottom"><span
-          aria-hidden="true" [ngClass]="util.getPriorityClass(selectedPriority)" class="fa fa-flag"></span></button>
+          [ngClass]="util.getPriorityClass(selectedPriority)" aria-hidden="true" class="fa fa-flag"></span></button>
       </li>
     </ul>
   </div>
@@ -49,7 +52,8 @@
 <!--Calendar Window Template-->
 <ng-template #calendarTemp>
   <ul class="calendar-dropdown" style="border-bottom: 1px solid #6d757d">
-    <li (click)="onDateSelected(dt.value)" *ngFor="let dt of dates" [ngClass]="selectedDate==dt?'date-active':''" [value]="dt.value"
+    <li (click)="onDateSelected(dt.value)" *ngFor="let dt of dates" [ngClass]="selectedDate==dt?'date-active':''"
+        [value]="dt.value"
         class="calendar-dropdown-item">
       <span aria-hidden="true" class="fa fa-calendar-check-o pr-2"></span>{{dt.label}}
       <span class="pull-right">{{dt.value | date:'EEE dd'}}</span>

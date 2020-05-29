@@ -4,25 +4,27 @@
       <form [formGroup]="task" autocomplete="off">
         <div class="form-group">
           <label for="name">Name :</label>
-          <input name="name" id="name" type="text" formControlName="name" class="form-control">
+          <input class="form-control" formControlName="name" id="name" name="name" type="text">
         </div>
         <div class="form-group">
           <label for="duedate">Duedate :</label>
-          <input [outsideClick]="true"  bsDatepicker [bsConfig]="bsConfig" type="text"
-            name="duedate" id="duedate" [minDate]="minDate" formControlName="duedate" class="form-control readonly-txt" readonly="">
+          <input [bsConfig]="bsConfig" [minDate]="minDate" [outsideClick]="true" bsDatepicker
+                 class="form-control readonly-txt" formControlName="duedate" id="duedate" name="duedate"
+                 readonly="" type="text">
         </div>
         <div class="form-group">
           <label for="tag">Tag :<span [ngClass]="util.getTagClass(task.controls['tag'].value)" aria-hidden="true"
-              class="fa fa-tag pl-2"></span></label>
-          <input [outsideClick]="true"  name="tag" #pop1="bs-popover" id="tag"
-            [popover]="tagTemp" placement="bottom" type="text" formControlName="tag" class="form-control readonly-txt" readonly="">
+                                      class="fa fa-tag pl-2"></span></label>
+          <input #pop1="bs-popover" [outsideClick]="true" [popover]="tagTemp" class="form-control readonly-txt"
+                 formControlName="tag" id="tag" name="tag" placement="bottom"
+                 readonly="" type="text">
         </div>
         <div class="form-group">
           <label for="priority">Priority : <span [ngClass]="util.getPriorityClass(task.controls['priority'].value)"
-              aria-hidden="true" class="fa fa-flag pr-1"></span></label>
-          <input [outsideClick]="true" name="priority" #pop2="bs-popover"
-            [popover]="priorityTemp" placement="bottom" id="priority" type="text" formControlName="priority"
-            class="form-control readonly-txt" class="form-control readonly-txt" readonly="">
+                                                 aria-hidden="true" class="fa fa-flag pr-1"></span></label>
+          <input #pop2="bs-popover" [outsideClick]="true" [popover]="priorityTemp"
+                 class="form-control readonly-txt" class="form-control readonly-txt" formControlName="priority" id="priority" name="priority"
+                 placement="bottom" readonly="" type="text">
         </div>
         <div>
           <button (click)="updateTodo()" class="btn btn-danger btn-rounded btn-sm">Save Changes</button>
@@ -36,8 +38,8 @@
 <ng-template #tagTemp>
   <ul class="tag-dropdown">
     <li (click)="onTagSelected(tag);pop1.hide()" *ngFor="let tag of tags"
-      [ngClass]="task.controls['tag'].value==tag?'tag-active':''" [value]="tag" class="tag-dropdown-item"><span
-        [ngClass]="util.getTagClass(tag)" aria-hidden="true" class="fa fa-tag pr-2"></span>{{tag}}</li>
+        [ngClass]="task.controls['tag'].value==tag?'tag-active':''" [value]="tag" class="tag-dropdown-item"><span
+      [ngClass]="util.getTagClass(tag)" aria-hidden="true" class="fa fa-tag pr-2"></span>{{tag}}</li>
   </ul>
 </ng-template>
 
@@ -45,8 +47,8 @@
 <ng-template #priorityTemp>
   <ul class="priority-dropdown">
     <li (click)="onPrioritySelected(priority);pop2.hide()" *ngFor="let priority of priorities"
-      [ngClass]="task.controls['priority'].value==priority?'priority-active':''" [value]="priority"
-      class="priority-dropdown-item">
+        [ngClass]="task.controls['priority'].value==priority?'priority-active':''" [value]="priority"
+        class="priority-dropdown-item">
       <span [ngClass]="util.getPriorityClass(priority)" aria-hidden="true" class="fa fa-flag pr-1"></span>{{priority}}
     </li>
   </ul>

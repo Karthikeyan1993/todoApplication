@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ColumnDef } from '../shared/model';
-import { Todo } from '../shared/model';
-import { TodoService } from '../todo.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { TaskComponent } from '../task/task.component';
+import {Component, OnInit} from '@angular/core';
+import {ColumnDef} from '../shared/model';
+import {Todo} from '../shared/model';
+import {TodoService} from '../todo.service';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
+import {TaskComponent} from '../task/task.component';
 
 @Component({
   selector: 'app-todo',
@@ -19,35 +19,11 @@ export class TodoComponent implements OnInit {
   constructor(
     private todoService: TodoService,
     private bsModelService: BsModalService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.init();
-  }
-
-  private init = (param?: any): void => {
-    this.getAllTodos();
-    this.getColumnsDef();
-  }
-
-  private getAllTodos = (param?: any): void => {
-    this.todoService
-      .getAllTodos()
-      .subscribe((response) => (this.todoList = response));
-  }
-
-  private getColumnsDef = (param?: any): void => {
-    this.columnDefs.push({ prop: 'id', displayName: 'Id', width: 3 });
-    this.columnDefs.push({ prop: 'name', displayName: 'Name', width: 15 });
-    this.columnDefs.push({ prop: 'tag', displayName: 'Tag', width: 5 });
-    this.columnDefs.push({
-      prop: 'priority',
-      displayName: 'Priority',
-      width: 5,
-    });
-    this.columnDefs.push({ prop: 'status', displayName: 'Status', width: 5 });
-    this.columnDefs.push({ prop: 'duedate', displayName: 'DueDate', width: 5 });
-    this.columnDefs.push({ prop: '', displayName: '', width: 5 });
   }
 
   getBadgeCount = (status: string): number => {
@@ -60,22 +36,51 @@ export class TodoComponent implements OnInit {
 
   deleteTodo = (id: string): void => {
     this.todoService.deleteTodo(id).subscribe((res) => {
-      this.getAllTodos();
+      this.getAllTodo();
+      console.log('todo deleted successfully', res);
+    }, error => {
+      console.log('error in deleting todo', error);
     });
   }
 
-  updateTodo = (todo: any): void => {
-    this.getAllTodos();
+  updateTodo = (): void => {
+    this.getAllTodo();
   }
 
-  openTaskComp = (param?: any): void => {
+  openTaskComp = (): void => {
     this.bsTaskModalRef = this.bsModelService.show(TaskComponent, {
       class: 'modal-lg',
     });
     this.bsTaskModalRef.content.saveEmitter.subscribe((data) => {
-      this.getAllTodos();
+      console.log('todo saved', data);
+      this.getAllTodo();
     });
   }
 
   filterData = (status) => (this.status = status);
+
+  private init = (): void => {
+    this.getAllTodo();
+    this.getColumnsDef();
+  }
+
+  private getAllTodo = (): void => {
+    this.todoService
+      .getAllTodos()
+      .subscribe((response) => (this.todoList = response));
+  }
+
+  private getColumnsDef = (): void => {
+    this.columnDefs.push({prop: 'id', displayName: 'Id', width: 3});
+    this.columnDefs.push({prop: 'name', displayName: 'Name', width: 15});
+    this.columnDefs.push({prop: 'tag', displayName: 'Tag', width: 5});
+    this.columnDefs.push({
+      prop: 'priority',
+      displayName: 'Priority',
+      width: 5,
+    });
+    this.columnDefs.push({prop: 'status', displayName: 'Status', width: 5});
+    this.columnDefs.push({prop: 'duedate', displayName: 'DueDate', width: 5});
+    this.columnDefs.push({prop: '', displayName: '', width: 5});
+  }
 }

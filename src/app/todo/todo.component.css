@@ -6,7 +6,7 @@
   user-select: none;
 }
 
-.btn-group-sm>.btn,
+.btn-group-sm > .btn,
 .btn-sm {
   padding: .10rem .1rem;
 }

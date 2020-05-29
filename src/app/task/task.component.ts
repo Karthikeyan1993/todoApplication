@@ -47,9 +47,10 @@ export class TaskComponent implements OnInit {
         (response) => {
           this.saveEmitter.emit(response);
           this.bsModalRef.hide();
+          console.log('todo saved successfully');
         },
         (error) => {
-          console.log(error);
+          console.log('Error while saving todo', error);
         }
       );
     }

@@ -4,6 +4,7 @@ import {ResetPasswordRequest} from '../shared/model';
 import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../auth.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -14,6 +15,7 @@ export class ResetPasswordComponent implements OnInit {
   reset: FormGroup;
   @ViewChild('template') template;
   bsConfirmationModalRef: BsModalRef = null;
+
   // tslint:disable-next-line:max-line-length
   constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private authService: AuthService, public bsModalService: BsModalService) {
     this.reset = this.fb.group({
@@ -38,7 +40,6 @@ export class ResetPasswordComponent implements OnInit {
       if (this.token) {
         this.authService.resetPassword(param)
           .subscribe((response) => {
-            console.log(response);
             const initialState = {
               class: 'modal-lg modal-dialog-centered',
             };
@@ -47,8 +48,9 @@ export class ResetPasswordComponent implements OnInit {
               initialState
             );
             this.reset.reset();
+            console.log('user password changed successfully', response);
           }, error => {
-              console.log(error);
+            console.log('Error while changing user password', error);
           });
       }
     }

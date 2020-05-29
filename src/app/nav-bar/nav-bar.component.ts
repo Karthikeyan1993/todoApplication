@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from '../authentication.service';
 import {AuthService} from '../auth.service';
 import {UserService} from '../user.service';
 import {UserDetailResponse} from '../shared/model';
@@ -13,7 +12,7 @@ export class NavBarComponent implements OnInit {
   username: string;
   isLoggedIn: boolean;
 
-  constructor(private auth: AuthService, private userService: UserService, private authentication: AuthenticationService) {
+  constructor(private auth: AuthService, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -25,15 +24,16 @@ export class NavBarComponent implements OnInit {
     });
   }
 
-  getUserProfile = (param?: any): void => {
+  getUserProfile = (): void => {
     this.userService.getUserDetails().subscribe((response: UserDetailResponse) => {
       this.username = response.username;
+      console.log('user profile retrieved successfully' , response);
     }, (error) => {
-      console.log(error);
+      console.log('error while retrieving user profile', error);
     });
   }
 
-  logOut = (param?: any): void => {
+  logOut = (): void => {
     this.auth.signOut();
   }
 

@@ -63,10 +63,10 @@ export class DataGridComponent implements OnInit {
     this.todoService.updateTodo(param).subscribe(
       (response) => {
         this.updateEmitter.emit(response);
+        console.log('Todo updated successfully', response);
       },
       (error) => {
-        console.log('error while updating todo');
-        console.log(error);
+        console.log('error while updating todo', error);
       }
     );
   }

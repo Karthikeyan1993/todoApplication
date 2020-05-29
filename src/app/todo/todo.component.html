@@ -2,31 +2,31 @@
   <div class="col-sm-12 col-md-12 col-lg-12 pl-0">
     <ul class="list-inline pt-2">
       <li class="list-inline-item">
-        <a tooltip="All" placement="bottom" href="javascript:void(0)" (click)="filterData('')"
-          class="btn btn-default btn-rounded btn-sm">All
+        <a (click)="filterData('')" class="btn btn-default btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
+           tooltip="All">All
         </a>
-        <span class="badge badge-dark" [innerHTML]="getBadgeCount('All')"></span>
+        <span [innerHTML]="getBadgeCount('All')" class="badge badge-dark"></span>
       </li>
       <li class="list-inline-item">
-        <a tooltip="In Progress" placement="bottom" href="javascript:void(0)" (click)="filterData('In Progress')"
-          class="btn btn-primary btn-rounded btn-sm">In Progress
+        <a (click)="filterData('In Progress')" class="btn btn-primary btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
+           tooltip="In Progress">In Progress
         </a>
-        <span class="badge badge-primary" [innerHTML]="getBadgeCount('In Progress')"></span>
+        <span [innerHTML]="getBadgeCount('In Progress')" class="badge badge-primary"></span>
       </li>
       <li class="list-inline-item">
-        <a tooltip="Completed" placement="bottom" href="javascript:void(0)" (click)="filterData('Completed')"
-          class="btn btn-success btn-rounded btn-sm">Completed
+        <a (click)="filterData('Completed')" class="btn btn-success btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
+           tooltip="Completed">Completed
         </a>
-        <span class="badge badge-success" [innerHTML]="getBadgeCount('Completed')"></span>
+        <span [innerHTML]="getBadgeCount('Completed')" class="badge badge-success"></span>
       </li>
       <li class="list-inline-item">
-        <a tooltip="Overdue" placement="bottom" href="javascript:void(0)" (click)="filterData('Overdue')"
-          class="btn btn-danger btn-rounded btn-sm">Overdue
+        <a (click)="filterData('Overdue')" class="btn btn-danger btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
+           tooltip="Overdue">Overdue
         </a>
-        <span class="badge badge-danger" [innerHTML]="getBadgeCount('Overdue')"></span>
+        <span [innerHTML]="getBadgeCount('Overdue')" class="badge badge-danger"></span>
       </li>
       <li class="list-inline-item pull-right">
-        <span (click)="openTaskComp()"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+        <span (click)="openTaskComp()"><i aria-hidden="true" class="fa fa-plus-circle"></i></span>
       </li>
     </ul>
   </div>
@@ -34,8 +34,9 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <div class="table-responsive">
-      <app-data-grid (updateEmitter)="updateTodo($event)" (deleteEmitter)="deleteTodo($event)"
-        [todoList]="todoList | dataFilter:status:'status'" [columnDefs]="columnDefs" [height]="500"></app-data-grid>
+      <app-data-grid (deleteEmitter)="deleteTodo($event)" (updateEmitter)="updateTodo()"
+                     [columnDefs]="columnDefs" [height]="500"
+                     [todoList]="todoList | dataFilter:status:'status'"></app-data-grid>
     </div>
   </div>
 </div>

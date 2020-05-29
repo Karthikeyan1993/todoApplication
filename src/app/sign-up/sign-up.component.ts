@@ -50,7 +50,7 @@ export class SignUpComponent implements OnInit {
           password: this.signUp.controls.password.value,
         };
         this.authService.signUp(request).subscribe(
-          (res) => {
+          (response) => {
             this.isSuccess = true;
             this.email = this.signUp.controls.email.value;
             const initialState = {
@@ -62,7 +62,7 @@ export class SignUpComponent implements OnInit {
               initialState
             );
             this.signUp.reset();
-            console.log('User account created successfully', res);
+            console.log('User account created successfully', response);
           },
           (error) => {
             console.log('Error while creating new user profile', error);
@@ -77,13 +77,14 @@ export class SignUpComponent implements OnInit {
       this.userService
         .isUserNameAlreadyExists(this.signUp.controls[key].value)
         .subscribe(
-          (ele) => {
-            this.isUseNameAvailable = ele;
-            if (ele) {
+          (response) => {
+            this.isUseNameAvailable = response;
+            if (response) {
               this.errMessage = 'Username already used';
             } else {
               this.errMessage = '';
             }
+            console.log('username already exists', response);
           },
           (error) => {
             this.isUseNameAvailable = false;
@@ -98,13 +99,14 @@ export class SignUpComponent implements OnInit {
       this.userService
         .isEmailAlreadyExists(this.signUp.controls[key].value)
         .subscribe(
-          (ele) => {
-            this.isEmailAvailable = ele;
-            if (ele) {
+          (response) => {
+            this.isEmailAvailable = response;
+            if (response) {
               this.errMessage = 'Email already used';
             } else {
               this.errMessage = '';
             }
+            console.log('Email already exists', response);
           },
           (error) => {
             this.isEmailAvailable = false;

@@ -15,7 +15,7 @@ export class Ng9LoadingSpinnerComponent implements OnInit {
     this.getStatus();
   }
 
-  private getStatus = (param?: any): void => {
+  private getStatus = (): void => {
     this.flag$ = this.loadingSpinnerService.getStatus();
   }
 
