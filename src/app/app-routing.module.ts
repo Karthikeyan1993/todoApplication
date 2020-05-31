@@ -2,13 +2,14 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {TodoComponent} from './todo/todo.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {SignInComponent} from "./sign-in/sign-in.component";
-import {SignUpComponent} from "./sign-up/sign-up.component";
-import {AuthGuard} from "./auth.guard";
-import {FreeGuard} from "./free.guard";
-import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
-import {ResetPasswordComponent} from "./reset-password/reset-password.component";
-import {ActivateComponent} from "./activate/activate.component";
+import {SignInComponent} from './sign-in/sign-in.component';
+import {SignUpComponent} from './sign-up/sign-up.component';
+import {AuthGuard} from './auth.guard';
+import {FreeGuard} from './free.guard';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
+import {ActivateComponent} from './activate/activate.component';
+import {TodoResolverService} from './todo-resolver.service';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
   }, {
     path: 'todo',
     component: TodoComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    resolve: {todos: TodoResolverService}
   }, {
     path: 'signin',
     component: SignInComponent,

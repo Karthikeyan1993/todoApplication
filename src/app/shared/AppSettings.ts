@@ -3,7 +3,7 @@ export class AppSettings {
   public static TOKEN_PREFIX = 'Bearer ';
   public static LOCAL_AUTH_TOKEN = 'todoAuthToken';
   public static LOCAL_AUTH_USER = 'todoAuthUser';
-  public static APP_BASE_URL = '';
+  public static APP_BASE_URL = 'http://localhost:5200/';
   public static TODO_ALL = 'All';
   public static STATUS_NEW = 'New';
   public static STATUS_IN_PROGRESS = 'In progress';

@@ -5,6 +5,7 @@ import {TodoService} from '../todo.service';
 import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
 import {TaskComponent} from '../task/task.component';
 import {AppSettings} from '../shared/AppSettings';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -19,11 +20,17 @@ export class TodoComponent implements OnInit {
   appSetting = AppSettings;
   constructor(
     private todoService: TodoService,
-    private bsModelService: BsModalService
+    private bsModelService: BsModalService,
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
+    this.route.data.subscribe(response => {
+      if (response) {
+        this.todoList = [...response.todos];
+      }
+    });
     this.init();
   }
 
@@ -61,7 +68,6 @@ export class TodoComponent implements OnInit {
   filterData = (status) => (this.status = status);
 
   private init = (): void => {
-    this.getAllTodo();
     this.getColumnsDef();
   }
 
