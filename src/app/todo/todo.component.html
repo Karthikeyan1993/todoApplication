@@ -37,10 +37,14 @@
 </div>
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="form-group has-search row col-sm-12 col-md-4 col-lg-4">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="searchTerm">
+    </div>
     <div class="table-responsive">
       <app-data-grid (deleteEmitter)="deleteTodo($event)" (updateEmitter)="updateTodo()"
                      [columnDefs]="columnDefs" [height]="500"
-                     [todoList]="todoList | dataFilter:status:'status'"></app-data-grid>
+                     [todoList]="todoList | dataFilter:status:'status' | dataFilter:searchTerm:'name'"></app-data-grid>
     </div>
   </div>
 </div>

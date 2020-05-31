@@ -18,6 +18,7 @@ export class TodoComponent implements OnInit {
   status = '';
   bsTaskModalRef: BsModalRef = null;
   appSetting = AppSettings;
+  searchTerm = '';
   constructor(
     private todoService: TodoService,
     private bsModelService: BsModalService,

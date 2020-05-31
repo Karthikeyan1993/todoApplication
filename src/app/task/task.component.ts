@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, ViewChild} from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { TodoService } from '../todo.service';
@@ -25,7 +25,9 @@ export class TaskComponent implements OnInit {
   defaultStatus = AppSettings.STATUS_NEW;
   bsConfig: Partial<BsDatepickerConfig>;
   util = Util;
+  counter = 0;
   @Output() saveEmitter: EventEmitter<any> = new EventEmitter();
+  @ViewChild('pop3') pop3;
   constructor(public bsModalRef: BsModalRef, private todoService: TodoService) {
     this.init();
   }
@@ -72,6 +74,10 @@ export class TaskComponent implements OnInit {
   onValueChange(value: Date): void {
     this.selectedDate = value;
     this.bsInlineValue = this.selectedDate;
+    if (this.counter !== 0) {
+      this.pop3.hide();
+    }
+    ++this.counter;
   }
 
   private init = (): void => {

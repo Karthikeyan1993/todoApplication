@@ -2,7 +2,7 @@
   <div class="input-group mb-3">
     <input [(ngModel)]="taskName" class="form-control" placeholder="e.g. Hackerearth coding challenge " type="text"/>
     <div class="input-group-append">
-      <button #pop3="bs-popover" [innerHTML]=" selectedDate | date:'EEE dd'" [outsideClick]="true"
+      <button (click)="counter=0" #pop3="bs-popover" [innerHTML]=" selectedDate | date:'EEE dd'" [outsideClick]="true"
               [popover]="calendarTemp"
               class="btn btn-danger btn-sm" placement="bottom">
       </button>

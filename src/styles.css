@@ -463,6 +463,16 @@ fieldset[disabled] .btn-info.focus {
   background-color: var(--panel-fill-bg);
   transition: 0s;
 }
+.bs-datepicker-body table td span.disabled, .bs-datepicker-body table td.disabled span {
+  color: #6d757d;
+}
+
+.bs-datepicker-body table td {
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  padding: 0;
+}
 
 /*  */
 

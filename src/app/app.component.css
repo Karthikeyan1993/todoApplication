@@ -6,3 +6,11 @@
   color: #949ba2;
   text-align: center;
 }
+.action-icons{
+  color:#545b62;
+  font-size: 24px;
+}
+.action-icons:hover{color: #EF3D4F}
+.list-inline-item:not(:last-child) {
+  margin-right: .9rem;
+}
