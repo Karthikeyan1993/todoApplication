@@ -5,25 +5,29 @@
         <a (click)="filterData('')" class="btn btn-default btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
            tooltip="All">All
         </a>
-        <span [innerHTML]="getBadgeCount('All')" class="badge badge-dark"></span>
+        <span [innerHTML]="getBadgeCount(appSetting.TODO_ALL)" class="badge badge-dark"></span>
       </li>
       <li class="list-inline-item">
-        <a (click)="filterData('In Progress')" class="btn btn-primary btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
+        <a (click)="filterData(appSetting.STATUS_NEW)" class="btn btn-info btn-rounded btn-sm" href="javascript:void(0)" placement="bottom" tooltip="New">New</a>
+        <span [innerHTML]="getBadgeCount(appSetting.STATUS_NEW)" class="badge badge-info">New</span>
+      </li>
+      <li class="list-inline-item">
+        <a (click)="filterData(appSetting.STATUS_IN_PROGRESS)" class="btn btn-primary btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
            tooltip="In Progress">In Progress
         </a>
-        <span [innerHTML]="getBadgeCount('In Progress')" class="badge badge-primary"></span>
+        <span [innerHTML]="getBadgeCount(appSetting.STATUS_IN_PROGRESS)" class="badge badge-primary"></span>
       </li>
       <li class="list-inline-item">
-        <a (click)="filterData('Completed')" class="btn btn-success btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
+        <a (click)="filterData(appSetting.STATUS_COMPLETED)" class="btn btn-success btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
            tooltip="Completed">Completed
         </a>
-        <span [innerHTML]="getBadgeCount('Completed')" class="badge badge-success"></span>
+        <span [innerHTML]="getBadgeCount(appSetting.STATUS_COMPLETED)" class="badge badge-success"></span>
       </li>
       <li class="list-inline-item">
-        <a (click)="filterData('Overdue')" class="btn btn-danger btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
+        <a (click)="filterData(appSetting.STATUS_OVERDUE)" class="btn btn-danger btn-rounded btn-sm" href="javascript:void(0)" placement="bottom"
            tooltip="Overdue">Overdue
         </a>
-        <span [innerHTML]="getBadgeCount('Overdue')" class="badge badge-danger"></span>
+        <span [innerHTML]="getBadgeCount(appSetting.STATUS_OVERDUE)" class="badge badge-danger"></span>
       </li>
       <li class="list-inline-item pull-right">
         <span (click)="openTaskComp()"><i aria-hidden="true" class="fa fa-plus-circle"></i></span>

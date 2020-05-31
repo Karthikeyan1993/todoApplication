@@ -17,13 +17,18 @@
       </td>
       <td><span [ngClass]="util.getPriorityClass(todo.priority)" aria-hidden="true"
                 class="fa fa-flag pr-1"></span>{{todo.priority}}</td>
-      <td><span [ngClass]="util.getStatusClass(todo.status)" class="badge">{{todo.status}}</span></td>
+      <td><span [ngClass]="util.getStatusClass(todo.status)" class="badge badge-chip">{{todo.status}}</span></td>
       <td>{{todo.duedate}}</td>
       <td *ngIf="row!=i"></td>
       <td *ngIf="row==i">
-          <span (click)="updateUpto(todo)" *ngIf="todo.status=='In Progress'" aria-hidden="true"
-                class="fa fa-check-square-o action-icons pr-2" tooltip="Mark As Complete"></span>
-        <span (click)="editTodo(todo);" *ngIf="todo.status=='In Progress'" aria-hidden="true"
+        <span (click)="updateUpto(todo,appSetting.STATUS_IN_PROGRESS)" *ngIf="todo.status==appSetting.STATUS_NEW"
+              aria-hidden="true" class="fa fa-thumb-tack action-icons pr-2 pl-1" tooltip="Click To Start"></span>
+        <span (click)="updateUpto(todo,appSetting.STATUS_COMPLETED)" *ngIf="todo.status==appSetting.STATUS_IN_PROGRESS"
+              aria-hidden="true"
+              class="fa fa-check-square-o action-icons pr-2" tooltip="Mark As Complete"></span>
+        <span (click)="editTodo(todo);"
+              *ngIf="todo.status==appSetting.STATUS_IN_PROGRESS || todo.status==appSetting.STATUS_NEW"
+              aria-hidden="true"
               class="fa fa-pencil-square-o action-icons pr-2" tooltip="Edit"></span>
         <span (click)="deleteTodo(todo.id)" aria-hidden="true" class="fa fa-trash-o action-icons"
               tooltip="Delete"></span>

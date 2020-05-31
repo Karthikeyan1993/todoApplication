@@ -11,6 +11,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 export class ForgotPasswordComponent implements OnInit {
   forgot: FormGroup;
   bsConfirmationModalRef: BsModalRef = null;
+  errorMessage = '';
   @ViewChild('template') template;
 
   constructor(private fb: FormBuilder, private authService: AuthService, public bsModalService: BsModalService) {
@@ -26,6 +27,7 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.forgot.valid) {
       this.authService.getResetPasswordLink(this.forgot.controls.usernameEmail.value)
         .subscribe(ele => {
+          this.errorMessage = '';
           const initialState = {
             class: 'modal-lg modal-dialog-centered',
           };
@@ -37,6 +39,7 @@ export class ForgotPasswordComponent implements OnInit {
           console.log('Email or Username validated successfully');
         }, error => {
           console.log(error);
+          this.errorMessage = error.error.message;
           console.log('Error while validating username or email');
         });
     }

@@ -4,6 +4,7 @@ import { TodoService } from '../todo.service';
 import { Util } from '../shared/Util';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
+import {AppSettings} from '../shared/AppSettings';
 @Component({
   selector: 'app-data-grid',
   templateUrl: './data-grid.component.html',
@@ -20,6 +21,7 @@ export class DataGridComponent implements OnInit {
   @Output() updateEmitter: EventEmitter<any> = new EventEmitter<any>();
   util = Util;
   bsEditTaskModalRef: BsModalRef = null;
+  appSetting = AppSettings;
   constructor(
     private bsModalService: BsModalService,
     private todoService: TodoService
@@ -57,9 +59,9 @@ export class DataGridComponent implements OnInit {
     });
   }
 
-  updateUpto = (todo: Todo): void => {
+    updateUpto = (todo: Todo, status: string): void => {
     const param = Object.assign({}, todo);
-    param.status = 'Completed';
+    param.status = status;
     this.todoService.updateTodo(param).subscribe(
       (response) => {
         this.updateEmitter.emit(response);

@@ -4,6 +4,7 @@ import {Todo} from '../shared/model';
 import {TodoService} from '../todo.service';
 import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
 import {TaskComponent} from '../task/task.component';
+import {AppSettings} from '../shared/AppSettings';
 
 @Component({
   selector: 'app-todo',
@@ -15,7 +16,7 @@ export class TodoComponent implements OnInit {
   columnDefs: ColumnDef[] = [];
   status = '';
   bsTaskModalRef: BsModalRef = null;
-
+  appSetting = AppSettings;
   constructor(
     private todoService: TodoService,
     private bsModelService: BsModalService

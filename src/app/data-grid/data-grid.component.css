@@ -9,3 +9,7 @@
 .fa-frown-o {
   font-size: 16px;
 }
+
+.badge-chip {
+  min-width: 75px !important;
+}

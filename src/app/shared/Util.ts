@@ -18,7 +18,8 @@ export class Util {
     return {
       'badge-danger': status === 'Overdue',
       'badge-success': status === 'Completed',
-      'badge-primary': status === 'In Progress'
+      'badge-primary': status === 'In progress',
+      'badge-info': status === 'New'
     };
   }
 }

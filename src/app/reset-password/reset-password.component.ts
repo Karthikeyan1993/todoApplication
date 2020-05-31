@@ -14,6 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   token: string;
   reset: FormGroup;
   @ViewChild('template') template;
+  errorMessage = '';
   bsConfirmationModalRef: BsModalRef = null;
 
   // tslint:disable-next-line:max-line-length
@@ -40,6 +41,7 @@ export class ResetPasswordComponent implements OnInit {
       if (this.token) {
         this.authService.resetPassword(param)
           .subscribe((response) => {
+            this.errorMessage = '';
             const initialState = {
               class: 'modal-lg modal-dialog-centered',
             };
@@ -50,6 +52,7 @@ export class ResetPasswordComponent implements OnInit {
             this.reset.reset();
             console.log('user password changed successfully', response);
           }, error => {
+            this.errorMessage = error.error.message;
             console.log('Error while changing user password', error);
           });
       }

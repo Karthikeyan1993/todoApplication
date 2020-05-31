@@ -22,7 +22,7 @@ export class TaskComponent implements OnInit {
   bsInlineValue: Date = new Date();
   minDate: Date = new Date();
   btnName: Date = new Date();
-  defaultStatus = AppSettings.STATUS_IN_PROGRESS;
+  defaultStatus = AppSettings.STATUS_NEW;
   bsConfig: Partial<BsDatepickerConfig>;
   util = Util;
   @Output() saveEmitter: EventEmitter<any> = new EventEmitter();

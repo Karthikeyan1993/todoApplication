@@ -60,6 +60,10 @@ body {
   background-color: var(--clr-primary) !important;
 }
 
+.badge-info {
+  background-color: #56c0e0 !important;
+}
+
 .flag-completed {
   color: var(--clr-green)
 }
@@ -108,7 +112,7 @@ label {
 
 .container-center {
   max-width: 400px;
-  margin: 3% auto 0;
+  margin: 2% auto 0;
   padding: 20px;
 }
 
@@ -305,6 +309,68 @@ fieldset[disabled] .form-control {
   color: #ffffff;
   background-color: rgba(97, 103, 121, 0.1);
   border-color: #616779;
+}
+
+.btn-info {
+  color: #949ba2;
+  background-color: transparent;
+  border: 2px solid #56c0e0;
+}
+.btn-info:not(:disabled):not(.disabled):focus,
+.btn-info:not(:disabled):not(.disabled).focus {
+  color: #ffffff;
+  background-color: rgba(86, 192, 224, 0.1);
+  border-color: #56c0e0;
+  outline: 0;
+  box-shadow: none;
+}
+.btn-info:hover {
+  color: #ffffff;
+  background-color: rgba(86, 192, 224, 0.1);
+  border-color: #56c0e0;
+}
+.btn-info:not(:disabled):not(.disabled):active,
+.btn-info:not(:disabled):not(.disabled).active,
+.open > .dropdown-toggle.btn-info {
+  color: #ffffff;
+  background-color: rgba(86, 192, 224, 0.1);
+  border-color: #56c0e0;
+}
+.btn-info:not(:disabled):not(.disabled):active:hover,
+.btn-info:not(:disabled):not(.disabled).active:hover,
+.open > .dropdown-toggle.btn-info:hover,
+.btn-info:not(:disabled):not(.disabled):active:focus,
+.btn-info:not(:disabled):not(.disabled).active:focus,
+.open > .dropdown-toggle.btn-info:focus,
+.btn-info:not(:disabled):not(.disabled):active.focus,
+.btn-info:not(:disabled):not(.disabled).active.focus,
+.open > .dropdown-toggle.btn-info.focus {
+  color: #ffffff;
+  background-color: rgba(86, 192, 224, 0.1);
+  border-color: #81d0e8;
+  outline: 0;
+  box-shadow: none;
+}
+.btn-info:active,
+.btn-info.active,
+.open > .dropdown-toggle.btn-info {
+  background-image: none;
+}
+.btn-info.disabled:hover,
+.btn-info[disabled]:hover,
+fieldset[disabled] .btn-info:hover,
+.btn-info.disabled:focus,
+.btn-info[disabled]:focus,
+fieldset[disabled] .btn-info:focus,
+.btn-info.disabled.focus,
+.btn-info[disabled].focus,
+fieldset[disabled] .btn-info.focus {
+  background-color: rgba(86, 192, 224, 0.1);
+  border-color: #56c0e0;
+}
+.btn-info .badge {
+  color: transparent;
+  background-color: #949ba2;
 }
 
 /* Bootstrap Table */
