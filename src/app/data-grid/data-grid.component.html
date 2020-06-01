@@ -23,11 +23,11 @@
       <td *ngIf="row==i">
         <span (click)="updateUpto(todo,appSetting.STATUS_IN_PROGRESS)" *ngIf="todo.status==appSetting.STATUS_NEW"
               aria-hidden="true" class="fa fa-thumb-tack action-icons pr-2 pl-1" tooltip="Click To Start"></span>
-        <span (click)="updateUpto(todo,appSetting.STATUS_COMPLETED)" *ngIf="todo.status==appSetting.STATUS_IN_PROGRESS"
+        <span (click)="updateUpto(todo,appSetting.STATUS_COMPLETED)" *ngIf="todo.status==appSetting.STATUS_IN_PROGRESS || todo.status==appSetting.STATUS_OVERDUE"
               aria-hidden="true"
               class="fa fa-check-square-o action-icons pr-2" tooltip="Mark As Complete"></span>
         <span (click)="editTodo(todo);"
-              *ngIf="todo.status==appSetting.STATUS_IN_PROGRESS || todo.status==appSetting.STATUS_NEW"
+              *ngIf="todo.status==appSetting.STATUS_IN_PROGRESS || todo.status==appSetting.STATUS_NEW || todo.status==appSetting.STATUS_OVERDUE"
               aria-hidden="true"
               class="fa fa-pencil-square-o action-icons pr-2" tooltip="Edit"></span>
         <span (click)="deleteTodo(todo.id)" aria-hidden="true" class="fa fa-trash-o action-icons"
